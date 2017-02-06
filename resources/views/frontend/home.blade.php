@@ -3,5 +3,10 @@
 @section('title', 'Home page')
 
 @section('contens')
-Home page
+	Home page
 @endsection
+
+
+@push('scripts')
+	
+@endpush

@@ -7,13 +7,31 @@
 
         <title>@yield('title') - {{ config('app.name') }}</title>
 
+        <link rel="stylesheet" href="{{mix('css/app.css')}}">
+
         @stack('styles')
 
     </head>
     <body>
 
-        @yield('contens')
+        <div id="wrapper">
+            
+            {{-- Header --}}
+            @include('frontend.layout.header')
+            
+            <div class="container">
+                @yield('contens')
+            </div>{{-- / .container --}}
+            
+            {{-- Footer --}}
+            @include('frontend.layout.footer')
+
+        </div>{{-- / #wrapper --}}
+
+        
+        <script src="{{mix('js/app.js')}}"></script>
 
         @stack('scripts')
+
     </body>
 </html>
