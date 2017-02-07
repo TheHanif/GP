@@ -8316,3 +8316,34 @@ button.close {
     display: none !important;
   }
 }
+
+.toolbar {
+  border-bottom: solid 1px #d3e0e9;
+}
+
+.toolbar .navbar-nav > li > a {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.toolbar .navbar-text {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.toolbar .navbar {
+  min-height: 25px;
+  margin-bottom: 0;
+}
+
+.toolbar .navbar-toggle {
+  padding: 0;
+}
+
+.toolbar .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+
+.toolbar .navbar-toggle {
+  margin: 5px 0;
+}
