@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -1396,7 +1396,7 @@ html {
 }
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Khula", sans-serif;
   font-size: 14px;
   line-height: 1.6;
   color: #636b6f;
@@ -7467,7 +7467,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Raleway", sans-serif;
+  font-family: "Khula", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7601,7 +7601,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Raleway", sans-serif;
+  font-family: "Khula", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -11417,16 +11417,17 @@ button.close {
   z-index: 500;
 }
 
-.CTA-cart {
+.cart-widget .CTA-cart {
   position: relative;
-  padding-left: 55px;
+  padding-left: 70px;
+  padding-right: 25px;
   overflow: hidden;
 }
 
-.CTA-cart::after {
+.cart-widget .CTA-cart::after {
   color: #fff;
-  /*content: "";*/
-  content: "\F07A";
+  content: "\F291";
+  /*content: "";*/
   position: absolute;
   float: left;
   left: 0;
@@ -11438,4 +11439,136 @@ button.close {
   background-color: #4D90FE;
 }
 
+.cart-widget .cart-options .col-md-6 {
+  padding: 0;
+}
+
+.cart-widget .cart-options {
+  padding: 10px;
+  margin: 0;
+}
+
+.cart-widget .cart-options > div:first-child a {
+  border-right: solid 1px #FFF;
+}
+
+.cart-widget .cart-options a {
+  background-color: #4D90FE;
+  color: #FFF;
+  display: block;
+}
+
+.cart-widget .cart-list ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  overflow-x: auto;
+  max-height: 284px;
+}
+
+.cart-widget .cart-list {
+  background-clip: padding-box;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+  display: none;
+  float: left;
+  font-size: 14px;
+  right: 0;
+  list-style: outside none none;
+  margin: 2px 0 0;
+  width: 300px;
+  padding: 0;
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  z-index: 1000;
+  /*opacity: 0;*/
+  -webkit-transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.cart-widget:hover .cart-list {
+  display: block;
+  /*opacity: 1;*/
+  -webkit-animation: fadeIn 0.4s linear;
+          animation: fadeIn 0.4s linear;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.cart-widget .cart-list li.row {
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.cart-widget .cart-list li div {
+  padding: 0 10px;
+  float: left;
+}
+
+.cart-widget .cart-list li .image {
+  width: 70px;
+}
+
+.cart-widget .cart-list li .detail {
+  width: 220px;
+}
+
+.cart-widget .cart-list li .fa {
+  display: inline-block;
+  font-size: 28px;
+  line-height: 46px;
+  text-align: center;
+  vertical-align: bottom;
+  width: 50px;
+  height: 50px;
+}
+
+.cart-widget .cart-list li .image a {
+  background: white;
+  position: absolute;
+  left: -50px;
+  top: 10px;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  z-index: 10000;
+  display: block;
+}
+
+.cart-widget .cart-list li:hover .image a {
+  left: 10px;
+  opacity: 1;
+}
+
+.cart-widget .cart-list li .image a:hover {
+  color: rgba(255, 0, 0, 0.5);
+}
+
 /*=====  End of HEADER MIDDLE  ======*/
+
+.square-borders {
+  border-radius: 0;
+}
