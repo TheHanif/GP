@@ -17,9 +17,9 @@ mix.js(
    
    .sass(
    	'resources/assets/sass/app.scss',
-   	'public/css');
+   	'public/css')
 
-
+.copy('node_modules/font-awesome/fonts', 'public/assets/fonts');
 
 // mix.copy('node_modules/vendor/acme.txt', 'public/js/acme.txt');
 
