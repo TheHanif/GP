@@ -10297,7 +10297,7 @@ return jQuery;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
+/* WEBPACK VAR INJECTION */(function(jQuery) {
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -10305,6 +10305,11 @@ return jQuery;
  */
 
 __webpack_require__(3);
+
+jQuery(document).on('click', '.mega-dropdown', function (e) {
+  e.stopPropagation();
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 2 */

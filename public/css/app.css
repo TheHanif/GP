@@ -11439,6 +11439,11 @@ button.close {
   background-color: #4D90FE;
 }
 
+.cart-widget {
+  margin-right: 0;
+  position: relative;
+}
+
 .cart-widget .cart-options .col-md-6 {
   padding: 0;
 }
@@ -11565,6 +11570,84 @@ button.close {
 
 .cart-widget .cart-list li .image a:hover {
   color: rgba(255, 0, 0, 0.5);
+}
+
+.navigation-bar {
+  background-color: #4D90FE;
+}
+
+.navigation-bar .navbar-toggle .icon-bar {
+  background-color: #FFF;
+}
+
+.navigation-bar .nav > li > a {
+  color: #FFF;
+}
+
+.navigation-bar .nav > li:hover > a {
+  background-color: #FFD200;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation-bar .navbar-collapse {
+    padding-left: 0;
+    padding-left: 0;
+  }
+}
+
+.navigation-bar .container {
+  position: relative;
+}
+
+.navigation-bar .mega {
+  position: static;
+}
+
+.navigation-bar .mega .dropdown-menu {
+  padding: 20px 0px;
+  width: 100%;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.navigation-bar .mega .dropdown-menu > li > ul {
+  padding: 0;
+  margin: 0;
+}
+
+.navigation-bar .mega .dropdown-menu > li > ul > li {
+  list-style: none;
+}
+
+.navigation-bar .mega .dropdown-menu > li > ul > li > a {
+  clear: both;
+  color: #333333;
+  display: block;
+  font-weight: normal;
+  line-height: 1.6;
+  padding: 3px 20px;
+  white-space: nowrap;
+}
+
+.navigation-bar .mega .dropdown-menu > li ul > li > a:hover,
+.navigation-bar .mega .dropdown-menu > li ul > li > a:focus {
+  background-color: #f5f5f5;
+  color: #262626;
+  text-decoration: none;
+}
+
+.navigation-bar .mega .dropdown-menu .dropdown-header {
+  color: #428bca;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navigation-bar .mega .dropdown-menu form {
+  margin: 3px 20px;
+}
+
+.navigation-bar .mega .dropdown-menu .form-group {
+  margin-bottom: 3px;
 }
 
 /*=====  End of HEADER MIDDLE  ======*/
