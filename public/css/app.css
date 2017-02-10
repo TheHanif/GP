@@ -11417,6 +11417,14 @@ button.close {
   z-index: 500;
 }
 
+.header_middle .logo {
+  text-align: center;
+}
+
+.header_middle .logo a {
+  display: inline-block;
+}
+
 .cart-widget .CTA-cart {
   position: relative;
   padding-left: 70px;
@@ -11493,12 +11501,7 @@ button.close {
   transition: opacity 0.4s ease-in-out;
 }
 
-.cart-widget:hover .cart-list {
-  display: block;
-  /*opacity: 1;*/
-  -webkit-animation: fadeIn 0.4s linear;
-          animation: fadeIn 0.4s linear;
-}
+/* MOUSE HOVER DISPLAY CART WIDGET IS IN MOBILE CSS*/
 
 @-webkit-keyframes fadeIn {
   0% {
@@ -11655,3 +11658,53 @@ button.close {
 .square-borders {
   border-radius: 0;
 }
+
+/*=====================================
+=            MEDIA QUERIES            =
+=====================================*/
+
+/* > 767 */
+
+@media screen and (min-width: 768px) {
+  /*body{display: none;}*/
+
+  .header_middle .logo {
+    margin-top: 3px;
+  }
+
+  .cart-widget:hover .cart-list {
+    display: block;
+    /*opacity: 1;*/
+    -webkit-animation: fadeIn 0.4s linear;
+            animation: fadeIn 0.4s linear;
+  }
+}
+
+@media screen and (width: 768px) {
+  .cart-widget .CTA-cart::after {
+    color: #4D90FE;
+    width: 30px;
+    background-color: transparent;
+  }
+
+  .cart-widget .CTA-cart {
+    padding-left: 35px;
+    padding-right: 10px;
+  }
+}
+
+/* end 768px*/
+
+/* < 768 */
+
+@media screen and (max-width: 767px) {
+  .header-search {
+    margin: 20px 0;
+  }
+
+  .cart-widget {
+    text-align: center;
+  }
+}
+
+/*=====  End of MEDIA QUERIES  ======*/

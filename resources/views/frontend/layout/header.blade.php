@@ -29,12 +29,12 @@
 
 	<div class="container header_middle">
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-sm-3 col-md-3">
 				<div class="logo"><a href="{{ url('/') }}">{{ Html::image('images/logo.png') }}</a></div>
 			</div>
 
-			<div class="col-md-6">
-				<div class="input-group">
+			<div class="col-sm-6 col-md-6">
+				<div class="input-group header-search">
 					<input type="text" class="form-control" id="exampleInputAmount" placeholder="Search">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-default">Go!</button>
@@ -42,7 +42,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-3">
+			<div class="col-sm-3 col-md-3">
 				<div class="cart-widget navbar-right clearfix">
 					<a href="#" class="btn CTA-cart btn-default square-borders">30 Items - PKR 1500/-</a>
 					<div class="cart-list">

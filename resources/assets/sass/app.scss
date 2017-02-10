@@ -36,6 +36,13 @@ $fa-font-path: "/assets/fonts";
   z-index: 500;
 }
 
+.header_middle .logo {
+  text-align: center;
+}
+.header_middle .logo a{
+	display: inline-block;
+}
+
 .cart-widget .CTA-cart {
   position: relative;
   padding-left: 70px;
@@ -91,11 +98,8 @@ $fa-font-path: "/assets/fonts";
   transition: opacity 0.4s ease-in-out;
  
 }
-.cart-widget:hover .cart-list{
-	display: block;
-	/*opacity: 1;*/
-	animation: fadeIn 0.4s linear;
-}
+/* MOUSE HOVER DISPLAY CART WIDGET IS IN MOBILE CSS*/
+
 @-webkit-keyframes fadeIn {
   0%{ opacity: 0 }
   100% { opacity: 1 }
@@ -145,3 +149,12 @@ $fa-font-path: "/assets/fonts";
 .square-borders{
 	border-radius: 0;
 }
+
+
+/*=====================================
+=            MEDIA QUERIES            =
+=====================================*/
+
+@import "resources/assets/css/phone";
+
+/*=====  End of MEDIA QUERIES  ======*/

@@ -1,0 +1,29 @@
+/* > 767 */
+@media screen and (min-width: 768px) {
+  /*body{display: none;}*/
+  .header_middle .logo{margin-top: 3px;}
+  .cart-widget:hover .cart-list{
+    display: block;
+    /*opacity: 1;*/
+    animation: fadeIn 0.4s linear;
+  }
+  
+}
+
+@media screen and (width: 768px){
+  .cart-widget .CTA-cart::after {
+    color: $primaryColor;
+    width: 30px;
+    background-color: transparent;
+  }
+  .cart-widget .CTA-cart {
+    padding-left: 35px;
+    padding-right: 10px;
+  }
+} /* end 768px*/
+
+/* < 768 */
+@media screen and (max-width: 767px){
+  .header-search{margin: 20px 0;}
+  .cart-widget{text-align: center;}
+}
