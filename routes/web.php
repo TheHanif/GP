@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/', ['as'=>'home', 'uses'=>'frontend\PageController@index']);
+Route::get('/', ['as'=>'home', 'uses'=>'PageController@index']);
