@@ -3,6 +3,7 @@
 namespace Modules\Category\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Cache;
 
 class Category extends Model
 {
@@ -85,19 +86,22 @@ class Category extends Model
      */
     public function getUrlAttribute()
     {
-        // Ancestors for get parents
-        $ancestors = $this->ancestors;
+        return Cache::remember('categoryURL'.$this->id, env('CACHE_ITEM_URL', 60), function() {
+            // Ancestors for get parents
+            $ancestors = $this->ancestors;
 
-        // Merge requested category in parents array
-        $ancestors = $ancestors->merge(collect([$this]));
+            // Merge requested category in parents array
+            $ancestors = $ancestors->merge(collect([$this]));
 
-        $sections=array();
-        foreach($ancestors as $ancestor)
-        {
-            $sections[]=$ancestor->slug;
-        }
+            $sections=array();
+            foreach($ancestors as $ancestor)
+            {
+                $sections[]=$ancestor->slug;
+            }
+            
+            return route('site.category', implode("/",$sections));
+        });
         
-        return route('site.category', implode("/",$sections));
     }
 
 }

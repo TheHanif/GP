@@ -35,6 +35,14 @@ class RouteServiceProvider extends ServiceProvider
         
         Route::bind('category', function($value, $route){
 
+            // Generate unique cache key for value
+            $cacheKey = 'pageURI_'.MD5($value);
+
+            // Get cached item
+            if (Cache::has($cacheKey)) {
+                return Cache::get($cacheKey);
+            }
+            
             if($value == "/"){ $value = "home"; };
 
             // Create array
@@ -65,9 +73,10 @@ class RouteServiceProvider extends ServiceProvider
             
             // If heirarchy matched the URI
             if(implode("/",$sections)==$value){
-                // echo $category->name . '<br>';
-                // echo 'Products here';
-                // return;
+
+                // Add item to cache
+                Cache::put($cacheKey, $category, env('CACHE_ITEM_URL', 60));
+
                 return $category;
             }else{
                 \App::abort(404);
