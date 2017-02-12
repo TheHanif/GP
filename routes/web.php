@@ -10,5 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['as' => 'site.'], function()
+{
+Route::get('/', ['as'=>'home', 'uses'=>'SiteController@index']);
 
-Route::get('/', ['as'=>'home', 'uses'=>'PageController@index']);
+Route::get('/category/{category}', ['as'=>'category', 'uses'=>'SiteController@category']);
+
+});

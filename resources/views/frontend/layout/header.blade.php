@@ -1,5 +1,5 @@
 <header>
-	
+
 	<div class="container-fluide top-bar">
 		<div class="container">
 			<nav class="navbar" role="navigation">
@@ -93,58 +93,7 @@
 		</div>
 	</div>{{-- / .header_middle --}}
 
-	<nav class="navbar square-borders navigation-bar" role="navigation">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
-	
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Deals</a></li>
-					<li class="dropdown mega">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mega menu <b class="caret"></b></a>
-						<ul class="dropdown-menu row">
-							<li class="col-md-3">
-								<ul>
-					                <li class="dropdown-header">Dresses</li>
-					                <li><a href="#">Unique Features</a></li>
-					                <li><a href="#">Image Responsive</a></li>
-					                <li><a href="#">Auto Carousel</a></li>
-					                <li><a href="#">Newsletter Form</a></li>
-					                <li><a href="#">Four columns</a></li>
-					                <li class="divider"></li>
-					                <li class="dropdown-header">Tops</li>
-					                <li><a href="#">Good Typography</a></li>
-					              </ul>
-							</li>
-							<li class="col-md-3"><a href="#">Another action</a></li>
-							<li class="col-md-3"><a href="#">Something else here</a></li>
-							<li class="col-md-3"><a href="#">Separated link</a></li>
-						</ul>
-					</li>
-
-					<li class="dropdown ">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li><a href="#">Separated link</a></li>
-						</ul>
-					</li>
-					
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div>
-	</nav>{{-- / .navigation-bar --}}
+	@include('frontend.partials.navigation')
 	
 
 </header>

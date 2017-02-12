@@ -7,13 +7,7 @@ use Modules\Category\Entities\Category;
 
 class NavigationComposer
 {
-	protected $category;
-    
-    public function __construct(Category $category)
-    {
-    	$this->$category = $category;
-    }
-
+	
     /**
      * Bind data to the view.
      *
@@ -21,7 +15,9 @@ class NavigationComposer
      * @return void
      */
     public function compose(View $view)
-    {
-        $view->with('count', 122);
+    {   
+        $categories = Category::select('id','name', 'slug')->firstLevel()->active()->get();
+
+        $view->with('categories', $categories);
     }
 }

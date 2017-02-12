@@ -14,8 +14,8 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Mian navigation
-        View::composer( '*', 'App\Http\ViewComposers\NavigationComposer');
+        // Main navigation bar
+        View::composer( 'frontend.partials.navigation', 'App\Http\ViewComposers\NavigationComposer');
     }
 
     /**

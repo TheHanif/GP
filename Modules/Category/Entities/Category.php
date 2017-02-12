@@ -15,7 +15,7 @@ class Category extends Model
      */
     public function parent()
     {
-    	return $this->belongsTo(\Modules\Category\Entities\Category::class, 'parent_id');
+    	return $this->belongsTo($this, 'parent_id');
     }
 
     /**
@@ -23,7 +23,41 @@ class Category extends Model
      */
     public function children()
     {
-    	return $this->hasMany(\Modules\Category\Entities\Category::class, 'parent_id');
+    	return $this->hasMany($this, 'parent_id');
+    }
+
+    /**
+     * With status active
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    /**
+     * Select item of first level in heirarchy
+     */
+    public function scopeFirstLevel($query)
+    {
+        return $query->where('parent_id', null);
+    }
+
+    /**
+     * Check if item has third level
+     * Used in navigation bar
+     */
+    public function UseMega()
+    {   
+        $useMega = false;
+
+        foreach ($this->children as $child) {
+            if ($child->children()->exists()) {
+                $useMega = true;
+                break;
+            }
+        }
+
+        return $useMega;
     }
 
 }

@@ -27,6 +27,10 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        // Route::bind('category', function($category){
+        //     return \Modules\Category\Entities\Category::where('slug', $category)->first();       
+        // });
     }
 
     /**
