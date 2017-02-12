@@ -4,6 +4,7 @@ namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
 use Modules\Category\Entities\Category;
+use Cache;
 
 class NavigationComposer
 {
@@ -16,7 +17,9 @@ class NavigationComposer
      */
     public function compose(View $view)
     {   
-        $categories = Category::select('id','name', 'slug')->firstLevel()->active()->get();
+        $categories = Cache::remember('composer_categories', env('CACHE_NAVBAR_CATEGORIES', 60), function() {
+            return Category::select('id','name', 'slug')->firstLevel()->active()->get();
+        });
 
         $view->with('categories', $categories);
     }
