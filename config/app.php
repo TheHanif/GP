@@ -168,6 +168,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Nwidart\Modules\LaravelModulesServiceProvider::class,
+        Spatie\PartialCache\PartialCacheServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -234,6 +235,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 
         'Module' => Nwidart\Modules\Facades\Module::class,
+        'PartialCache' => Spatie\PartialCache\PartialCacheFacade::class,
 
     ],
 

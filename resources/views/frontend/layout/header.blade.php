@@ -93,7 +93,8 @@
 		</div>
 	</div>{{-- / .header_middle --}}
 
-	@include('frontend.partials.navigation')
+	{{-- @include('frontend.partials.navigation') --}}
+	@cache('frontend.partials.navigation', null, 'partialcache.expiry')
 	
 
 </header>
