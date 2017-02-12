@@ -167,6 +167,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        Nwidart\Modules\LaravelModulesServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -179,6 +180,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
 
+        App\Providers\ComposerServiceProvider::class,
     ],
 
     /*
@@ -230,6 +232,8 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        'Module' => Nwidart\Modules\Facades\Module::class,
 
     ],
 
