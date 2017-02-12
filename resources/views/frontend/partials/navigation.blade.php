@@ -20,7 +20,7 @@
 					<li class="@if($category->children()->exists()) dropdown @endif @if($category->useMega()) mega @endif" >
 						
 						@if($category->children()->exists())
-							<a href="{{ route('site.category', $category->slug) }}" class="dropdown-toggle" data-toggle="dropdown">{{ $category->name }} <b class="caret"></b></a>
+							<a href="{{ $category->url }}" class="dropdown-toggle" data-toggle="dropdown">{{ $category->name }} <b class="caret"></b></a>
 							
 							@if($category->useMega())
 								<ul class="dropdown-menu row">
@@ -30,7 +30,7 @@
 											<ul>
 								                <li class="dropdown-header">{{$child->name}}</li>
 								                @foreach($child->children as $subChild)
-													<li><a href="{{ route('site.category', $subChild->slug) }}">{{$subChild->name}}</a></li>
+													<li><a href="{{ $subChild->url }}">{{$subChild->name}}</a></li>
 								                @endforeach
 								              </ul>
 										</li>
@@ -40,13 +40,13 @@
 							@else
 								<ul class="dropdown-menu">
 									@foreach($category->children as $child)
-										<li><a href="{{ route('site.category', $child->slug) }}">{{$child->name}}</a></li>
+										<li><a href="{{ $child->url }}">{{$child->name}}</a></li>
 									@endforeach
 								</ul>
 							@endif
 
 						@else
-							<a href="{{ route('site.category', $child->slug) }}">{{ $category->name }}</a>
+							<a href="{{ $category->url }}">{{ $category->name }}</a>
 						@endif {{-- end of has children --}}
 
 					</li>

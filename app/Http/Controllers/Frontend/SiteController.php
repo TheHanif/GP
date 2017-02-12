@@ -23,6 +23,8 @@ class SiteController extends Controller
      */
     public function category(Category $category)
     {
+        echo 'Category products here';
+
     	dd($category);
     }
 }

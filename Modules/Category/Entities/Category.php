@@ -60,4 +60,44 @@ class Category extends Model
         return $useMega;
     }
 
+    public function ancestors(){
+        
+        $ancestors = $this->select('id', 'slug', 'parent_id')->where('id', '=', $this->parent_id)->get();
+
+        while ($ancestors->last() && $ancestors->last()->parent_id !== null)
+        {
+            $parent = $ancestors->last()->ancestors;
+            $ancestors = $ancestors->merge($parent);
+        }
+
+        return $ancestors;
+    }
+
+    public function getAncestorsAttribute()
+    {
+        // return $this->ancestors();
+        // or like this, if you want it the other way around
+        return $this->ancestors()->reverse();
+    }
+
+    /**
+     * Generate URL using ancestors
+     */
+    public function getUrlAttribute()
+    {
+        // Ancestors for get parents
+        $ancestors = $this->ancestors;
+
+        // Merge requested category in parents array
+        $ancestors = $ancestors->merge(collect([$this]));
+
+        $sections=array();
+        foreach($ancestors as $ancestor)
+        {
+            $sections[]=$ancestor->slug;
+        }
+        
+        return route('site.category', implode("/",$sections));
+    }
+
 }

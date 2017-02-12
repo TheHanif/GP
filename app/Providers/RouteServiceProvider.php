@@ -31,6 +31,48 @@ class RouteServiceProvider extends ServiceProvider
         // Route::bind('category', function($category){
         //     return \Modules\Category\Entities\Category::where('slug', $category)->first();       
         // });
+        
+        Route::bind('category', function($value, $route){
+
+            if($value == "/"){ $value = "home"; };
+
+            // Create array
+            $explodedPage = explode("/",$value);
+
+            // Get it from DB using last
+            $category = \Modules\Category\Entities\Category::select('id', 'slug', 'parent_id')->where('slug', last($explodedPage));
+
+            // 404 if not found
+            if(!$category->exists()){
+                \App::abort(404);
+            }
+
+            // Get first for array
+            $category = $category->first();
+
+            // Ancestors for get parents
+            $ancestors = $category->ancestors;
+
+            // Merge requested category in parents array
+            $ancestors = $ancestors->merge(collect([$category]));
+            
+            $sections=array();
+            foreach($ancestors as $ancestor)
+            {
+                $sections[]=$ancestor->slug;
+            }
+            
+            // If heirarchy matched the URI
+            if(implode("/",$sections)==$value){
+                // echo $category->name . '<br>';
+                // echo 'Products here';
+                // return;
+                return $category;
+            }else{
+                \App::abort(404);
+                //Else Redirect
+            }
+        });
     }
 
     /**

@@ -10,10 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// lets try a wildcard...
+
 Route::group(['as' => 'site.'], function()
 {
-Route::get('/', ['as'=>'home', 'uses'=>'SiteController@index']);
+	Route::get('/', ['as'=>'home', 'uses'=>'SiteController@index']);
 
-Route::get('/category/{category}', ['as'=>'category', 'uses'=>'SiteController@category']);
+	// Using route model binding and whildcart, access heirarchical URL and parse as eloquent model of the category
+	Route::get('/category/{category}', ['as'=>'category', 'uses'=>'SiteController@category'])->where('category', '(.*)');
+	
 
 });
