@@ -4,6 +4,9 @@
 //     dump($event->sql);
 //     dump($event->bindings);
 // });
+
+// \Debugbar::enable();
+// \Debugbar::disable();
 /*
 |--------------------------------------------------------------------------
 | Web Routes
