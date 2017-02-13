@@ -94,7 +94,7 @@
 	</div>{{-- / .header_middle --}}
 
 	{{-- @include('frontend.partials.navigation') --}}
-	@cache('frontend.partials.navigation', null, 'partialcache.expiry')
+	@cache('frontend.partials.navigation', null, config('partialcache.expiry'))
 	
 
 </header>

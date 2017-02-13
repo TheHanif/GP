@@ -1,5 +1,9 @@
 <?php
-
+// Display all SQL executed in Eloquent
+// DB::listen(function ($event) {
+//     dump($event->sql);
+//     dump($event->bindings);
+// });
 /*
 |--------------------------------------------------------------------------
 | Web Routes
