@@ -11417,10 +11417,6 @@ button.close {
   z-index: 500;
 }
 
-.header_middle .logo {
-  text-align: center;
-}
-
 .header_middle .logo a {
   display: inline-block;
 }
@@ -11655,9 +11651,116 @@ button.close {
 
 /*=====  End of HEADER MIDDLE  ======*/
 
+body {
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .square-borders {
   border-radius: 0;
 }
+
+/*==============================
+=            Footer            =
+==============================*/
+
+.footer-copy {
+  background-color: #4D90FE;
+}
+
+.footer-copy p {
+  color: #FFF;
+  padding: 15px 0;
+  margin-bottom: 0;
+}
+
+.footer-copy .col-md-6:last-child p {
+  text-align: right;
+}
+
+.socialized {
+  padding: 30px 0;
+}
+
+.socialized label {
+  padding-top: 8px;
+  /*font-size: 1.15em;*/
+}
+
+.socialized ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: right;
+}
+
+.socialized ul li {
+  display: inline-block;
+}
+
+.socialized ul li a {
+  display: block;
+}
+
+.socialized ul li a i {
+  /*padding: 10px;*/
+  background-color: #f00;
+  width: 35px;
+  height: 35px;
+  font-size: 1.3em;
+  line-height: 2em;
+  text-align: center;
+  color: #FFF;
+}
+
+.socialized ul li p {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.footer-navigation h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.footer-navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-navigation ul li {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.footer-navigation ul li a {
+  display: block;
+  position: relative;
+  padding-left: 22px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.footer-navigation ul li ::before {
+  background-color: #4D90FE;
+  color: #fff;
+  content: "\F00C";
+  display: inline-block;
+  font-family: FontAwesome;
+  font-size: 0.7em;
+  left: 0;
+  padding: 0px;
+  position: absolute;
+  text-align: center;
+  width: 13px;
+  border-radius: 2px;
+  margin-top: 2px;
+}
+
+/*=====  End of Footer  ======*/
 
 /*=====================================
 =            MEDIA QUERIES            =
@@ -11704,6 +11807,39 @@ button.close {
 
   .cart-widget {
     text-align: center;
+  }
+
+  .header_middle .logo {
+    text-align: center;
+  }
+
+  .socialized label {
+    margin: 0;
+    display: block;
+    text-align: center;
+    font-size: 1.4em;
+  }
+
+  .socialized ul {
+    text-align: center;
+  }
+
+  .socialized ul li:first-child {
+    display: block;
+    clear: both;
+  }
+
+  .socialized ul li:first-child p {
+    margin-right: 0;
+  }
+
+  .footer-copy {
+    padding: 20px 0;
+  }
+
+  .footer-copy p {
+    text-align: center !important;
+    padding: 8px 0;
   }
 }
 

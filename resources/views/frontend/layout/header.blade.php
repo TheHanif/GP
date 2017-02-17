@@ -35,9 +35,9 @@
 
 			<div class="col-sm-6 col-md-6">
 				<div class="input-group header-search">
-					<input type="text" class="form-control" id="exampleInputAmount" placeholder="Search">
+					<input type="text" class="form-control square-borders" id="exampleInputAmount" placeholder="Search">
 					<span class="input-group-btn">
-						<button type="button" class="btn btn-default">Go!</button>
+						<button type="button" class="btn btn-default square-borders">Go!</button>
 					</span>
 				</div>
 			</div>

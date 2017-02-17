@@ -7,7 +7,7 @@
     /*opacity: 1;*/
     animation: fadeIn 0.4s linear;
   }
-  
+
 }
 
 @media screen and (width: 768px){
@@ -26,4 +26,34 @@
 @media screen and (max-width: 767px){
   .header-search{margin: 20px 0;}
   .cart-widget{text-align: center;}
+
+  .header_middle .logo {
+    text-align: center;
+  }
+
+  .socialized{
+    label{
+        margin: 0;
+        display: block;
+        text-align: center;
+        font-size: 1.4em;
+    }
+    ul{
+        text-align: center;
+        li:first-child{
+            display: block;
+            clear: both;
+            p{
+                margin-right: 0;
+            }
+        }
+    }
+  }
+    .footer-copy{
+        padding: 20px 0;
+        p{
+            text-align: center !important;
+            padding: 8px 0;
+        }
+    }
 }

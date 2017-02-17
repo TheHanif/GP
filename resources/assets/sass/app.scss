@@ -36,9 +36,6 @@ $fa-font-path: "/assets/fonts";
   z-index: 500;
 }
 
-.header_middle .logo {
-  text-align: center;
-}
 .header_middle .logo a{
 	display: inline-block;
 }
@@ -146,9 +143,112 @@ $fa-font-path: "/assets/fonts";
 
 /*=====  End of HEADER MIDDLE  ======*/
 
+body{
+    color: $DarkColor;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 .square-borders{
 	border-radius: 0;
 }
+
+/*==============================
+=            Footer            =
+==============================*/
+
+.footer-copy{
+    background-color: $primaryColor;
+
+    p{
+        color: $whiteLinkColor;
+        padding: 15px 0;
+        margin-bottom: 0;
+    }
+
+    .col-md-6:last-child{
+        p{
+            text-align: right;
+        }
+    }
+}
+
+.socialized{
+    padding: 30px 0;
+
+    label{
+        padding-top: 8px;
+        /*font-size: 1.15em;*/
+    }
+    ul{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        text-align: right;
+        li{
+            display: inline-block;
+            a{
+                display: block;
+                i{
+                    /*padding: 10px;*/
+                    background-color: #f00;
+                    width: 35px;
+                    height: 35px;
+                    font-size: 1.3em;
+                    line-height: 2em;
+                    text-align: center;
+                    color: #FFF;
+                }
+            }
+            p {
+              font-size: 1.4em;
+              font-weight: bold;
+              margin-right: 15px;
+            }
+        }
+    }
+}
+
+.footer-navigation{
+  h3{
+    font-size: 1.1em;
+    font-weight:bold;
+    margin-bottom:25px;
+  }
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li{
+      width: 100%;
+      margin-bottom:10px;
+      a{
+        display: block;
+        position: relative;
+        padding-left: 22px;
+        font-size:0.9em;
+        color: $DarkColor;
+
+      }
+      ::before{
+        background-color: $primaryColor;
+        color: #fff;
+        content: "";
+        display: inline-block;
+        font-family: FontAwesome;
+        font-size: 0.7em;
+        left: 0;
+        padding: 0px;
+        position: absolute;
+        text-align: center;
+        width: 13px;
+        border-radius: 2px;
+        margin-top:2px;
+      }
+    }
+  }
+}
+
+/*=====  End of Footer  ======*/
+
 
 
 /*=====================================
