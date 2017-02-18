@@ -49,7 +49,7 @@ class RouteServiceProvider extends ServiceProvider
             $explodedPage = explode("/",$value);
 
             // Get it from DB using last
-            $category = \Modules\Category\Entities\Category::select('id', 'slug', 'parent_id')->where('slug', last($explodedPage));
+            $category = \Modules\Category\Entities\Category::select('id', 'slug', 'name', 'parent_id')->where('slug', last($explodedPage));
 
             // 404 if not found
             if(!$category->exists()){

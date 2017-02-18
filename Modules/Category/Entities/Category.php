@@ -63,7 +63,7 @@ class Category extends Model
 
     public function ancestors(){
         
-        $ancestors = $this->select('id', 'slug', 'parent_id')->where('id', '=', $this->parent_id)->get();
+        $ancestors = $this->select('id', 'slug', 'name', 'parent_id')->where('id', '=', $this->parent_id)->get();
 
         while ($ancestors->last() && $ancestors->last()->parent_id !== null)
         {
@@ -102,6 +102,14 @@ class Category extends Model
             return route('site.category', implode("/",$sections));
         });
         
+    }
+
+    /**
+     * Get all the products associated with the category
+     */
+    function products()
+    {
+        return $this->belongsToMany(\Modules\Product\Entities\Product::class);
     }
 
 }

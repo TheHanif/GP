@@ -17,14 +17,17 @@ class SiteController extends Controller
     	return view('frontend.home');
     }
 
+
     /**
      * Category page
-     * @param  Category $category [description]
+     * @param  Category $category
      */
     public function category(Category $category)
     {
-        echo 'Category products here';
+        $products = $category->products()->active()->get();
 
-    	dd($category);
+        $page_title = $category->name;
+
+        return view('product::list', compact('products', 'page_title'));
     }
 }
