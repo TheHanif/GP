@@ -18,6 +18,9 @@ mix.js(
    .sass(
    	'resources/assets/sass/app.scss',
    	'public/css')
+    .sass(
+	'resources/assets/sass/product_list.scss',
+	'public/css')
 
 .copy('node_modules/font-awesome/fonts', 'public/assets/fonts');
 

@@ -1,0 +1,146 @@
+.product-wrapper {
+  background-color: #fff;
+  padding-bottom: 15px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.product-wrapper .product-image {
+  height: 262px;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-wrapper .product-image > a {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.product-wrapper .product-image > a > img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+
+.product-wrapper .product-image > a > img:first-child {
+  top: 0;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.product-wrapper .product-image > a > img:last-child {
+  bottom: -100%;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  opacity: 0;
+}
+
+.product-wrapper .product-image .actions {
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  position: absolute;
+  bottom: -81px;
+  z-index: 3;
+  width: 100%;
+}
+
+.product-wrapper .product-image .actions .add-to-links {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px 0;
+}
+
+.product-wrapper .product-image .actions .add-to-links li {
+  display: inline;
+}
+
+.product-wrapper .product-image .actions .add-to-links li a {
+  padding: 5px 10px;
+  color: #fff;
+}
+
+.product-wrapper .product-image .actions .add-to-links li a i {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.product-wrapper .product-image .actions .action-add-cart {
+  background-color: #4D90FE;
+  padding: 5px 0;
+}
+
+.product-wrapper .product-image .actions .action-add-cart a {
+  display: block;
+  text-align: center;
+  color: #FFF;
+  font-size: 18px;
+}
+
+.product-wrapper .product-image .actions .action-add-cart :hover {
+  text-decoration: none;
+}
+
+.product-wrapper .product-name a {
+  display: block;
+  text-align: center;
+  font-size: 0.6em;
+  color: #333;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.product-wrapper .product-name a:hover {
+  text-decoration: none;
+  color: #4D90FE;
+}
+
+.product-wrapper .ratings ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.product-wrapper .ratings ul li {
+  display: inline-block;
+  color: lightgray;
+}
+
+.product-wrapper .ratings ul .active {
+  color: goldenrod;
+}
+
+.product-wrapper .price-box {
+  text-align: center;
+  font-size: 18px;
+  color: #4D90FE;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.product-wrapper:hover {
+  box-shadow: #ccc 0 0 5px;
+}
+
+.product-wrapper:hover .product-image > a {
+  text-decoration: none;
+}
+
+.product-wrapper:hover .product-image > a img:first-child {
+  top: -60%;
+  opacity: 0;
+}
+
+.product-wrapper:hover .product-image > a img:last-child {
+  bottom: 0;
+  opacity: 1;
+}
+
+.product-wrapper:hover .product-image .actions {
+  bottom: 0;
+}
