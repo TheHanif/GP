@@ -53,4 +53,20 @@ class Product extends Model
 
         return $sale_price;
     }
+
+    /**
+     * Product thumbnail images
+     */
+    public function thumbnails(){
+        return $this->hasMany(\Modules\Product\Entities\ProductImage::class)
+            ->where('size', 'thumbnail');
+    }
+
+    /**
+     * Product images
+     */
+    public function images(){
+        return $this->hasMany(\Modules\Product\Entities\ProductImage::class)
+            ->where('size', 'large');
+    }
 }

@@ -17,8 +17,9 @@
                             <div class="product-wrapper">
                                 <div class="product-image">
                                     <a href="#">
-                                        {{Html::image('uploads/dummy/7-300x300.png')}}
-                                        {{Html::image('uploads/dummy/16-300x300.png')}}
+                                        @foreach($product->thumbnails as $thumbnail)
+                                            {{Html::image($thumbnail->path.$thumbnail->name)}}
+                                        @endforeach
                                     </a>
                                     <div class="actions">
                                         <ul class="add-to-links clearfix">

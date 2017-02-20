@@ -24,7 +24,7 @@ class SiteController extends Controller
      */
     public function category(Category $category)
     {
-        $products = $category->products()->active()->get();
+        $products = $category->products()->with('thumbnails')->active()->get();
 
         $page_title = $category->name;
 
