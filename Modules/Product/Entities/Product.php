@@ -3,6 +3,7 @@
 namespace Modules\Product\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Cache;
 
 class Product extends Model
 {
@@ -42,16 +43,15 @@ class Product extends Model
         if($this->discount > 0 && $this->discount_type != null){
 
             if ($this->discount_type == 'percentage'){
-                $sale_price += ($sale_price/100)*$this->discount;
+                $sale_price -= ($sale_price/100)*$this->discount;
             }
 
             if ($this->discount_type == 'flat'){
                 $sale_price = $sale_price-$this->discount;
             }
-
         }
 
-        return $sale_price;
+        return number_format($sale_price, 2);
     }
 
     /**
@@ -61,6 +61,11 @@ class Product extends Model
         return $this->hasMany(\Modules\Product\Entities\ProductImage::class)
             ->where('size', 'thumbnail');
     }
+    public function getThumbnailsAttribute(){
+        return Cache::remember('productThumbnails'.$this->id, env('CACHE_ITEM', 60), function() {
+            return $this->thumbnails()->get();
+        });
+    }
 
     /**
      * Product images
@@ -68,5 +73,20 @@ class Product extends Model
     public function images(){
         return $this->hasMany(\Modules\Product\Entities\ProductImage::class)
             ->where('size', 'large');
+    }
+    public function getImagesAttribute(){
+        return Cache::remember('productImages'.$this->id, env('CACHE_ITEM', 60), function() {
+            return $this->images()->get();
+        });
+    }
+
+    /**
+     * Generate Route using last category
+     */
+    public function getRouteAttribute()
+    {
+        return Cache::remember('productURL'.$this->id, env('CACHE_ITEM', 60), function() {
+            return route('site.product', [$this->categories->last()->AncestorsList, $this->slug]);
+        });
     }
 }
