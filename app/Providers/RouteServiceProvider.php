@@ -32,57 +32,92 @@ class RouteServiceProvider extends ServiceProvider
         // Route::bind('category', function($category){
         //     return \Modules\Category\Entities\Category::where('slug', $category)->first();       
         // });
+
+         Route::bind('product', function($product, $route){
+
+             $cacheKey = MD5($route->parameters['parent'].$route->parameters['product']);
+             // Get cached item
+             if (env('CACHE_SINGLE_PRODUCT', false) && Cache::has($cacheKey)) {
+                 return Cache::get($cacheKey);
+             }
+
+             // Get Single product
+             $product = \Modules\Product\Entities\Product::where('slug', $product)
+                 ->active()->firstOrFail();
+
+             $status = true;
+
+             // Check parent by requested URL
+             if (!$this->itemParentAncestors(\Modules\Category\Entities\Category::class, $route->parameters['parent'], 'cat_'.$cacheKey)){
+                 $status = false;
+             }
+
+             if ($status){
+
+                 // Don't cache if you want to display stock count in single product view
+                 if(env('CACHE_SINGLE_PRODUCT', false))
+                 Cache::put($cacheKey, $product, env('CACHE_ITEM_URL', 60));
+
+                 return $product;
+             }
+
+         });
         
         Route::bind('category', function($value, $route){
 
             // Generate unique cache key for value
             $cacheKey = 'pageURI_'.MD5($value);
 
-            // Get cached item
-            if (Cache::has($cacheKey)) {
-                return Cache::get($cacheKey);
-            }
-            
-            if($value == "/"){ $value = "home"; };
+            return $this->itemParentAncestors(\Modules\Category\Entities\Category::class, $value, $cacheKey);
 
-            // Create array
-            $explodedPage = explode("/",$value);
-
-            // Get it from DB using last
-            $category = \Modules\Category\Entities\Category::select('id', 'slug', 'parent_id')->where('slug', last($explodedPage));
-
-            // 404 if not found
-            if(!$category->exists()){
-                \App::abort(404);
-            }
-
-            // Get first for array
-            $category = $category->first();
-
-            // Ancestors for get parents
-            $ancestors = $category->ancestors;
-
-            // Merge requested category in parents array
-            $ancestors = $ancestors->merge(collect([$category]));
-            
-            $sections=array();
-            foreach($ancestors as $ancestor)
-            {
-                $sections[]=$ancestor->slug;
-            }
-            
-            // If heirarchy matched the URI
-            if(implode("/",$sections)==$value){
-
-                // Add item to cache
-                Cache::put($cacheKey, $category, env('CACHE_ITEM_URL', 60));
-
-                return $category;
-            }else{
-                \App::abort(404);
-                //Else Redirect
-            }
         });
+    }
+
+
+    function itemParentAncestors($model, $value, $cacheKey){
+        // Get cached item
+        if (Cache::has($cacheKey)) {
+            return Cache::get($cacheKey);
+        }
+
+        if($value == "/"){ $value = "home"; };
+
+        // Create array
+        $explodedPage = explode("/",$value);
+
+        // Get it from DB using last
+        $item = $model::select('id', 'slug', 'name', 'parent_id')->where('slug', last($explodedPage))->active();
+
+        // 404 if not found
+        if(!$item->exists()){
+            return false;
+        }
+
+        // Get first for array
+        $item = $item->first();
+
+        // Ancestors for get parents
+        $ancestors = $item->ancestors;
+
+        // Merge requested category in parents array
+        $ancestors = $ancestors->merge(collect([$item]));
+
+        $sections=array();
+        foreach($ancestors as $ancestor)
+        {
+            $sections[]=$ancestor->slug;
+        }
+
+        // If heirarchy matched the URI
+        if(implode("/",$sections)==$value){
+
+            // Add item to cache
+            Cache::put($cacheKey, $item, env('CACHE_ITEM_URL', 60));
+
+            return $item;
+        }else{
+            return false;
+        }
     }
 
     /**

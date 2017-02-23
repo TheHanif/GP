@@ -63,7 +63,8 @@ class Category extends Model
 
     public function ancestors(){
         
-        $ancestors = $this->select('id', 'slug', 'parent_id')->where('id', '=', $this->parent_id)->get();
+        $ancestors = $this->select('id', 'slug', 'name', 'parent_id')->where('id', '=', $this->parent_id)
+            ->active()->get();
 
         while ($ancestors->last() && $ancestors->last()->parent_id !== null)
         {
@@ -82,11 +83,11 @@ class Category extends Model
     }
 
     /**
-     * Generate URL using ancestors
+     * Generate Ancestors list for URL and Route
      */
-    public function getUrlAttribute()
+    public function getAncestorsListAttribute()
     {
-        return Cache::remember('categoryURL'.$this->id, env('CACHE_ITEM_URL', 60), function() {
+        return Cache::remember('categoryAncestorsList'.$this->id, env('CACHE_ITEM', 60), function() {
             // Ancestors for get parents
             $ancestors = $this->ancestors;
 
@@ -98,10 +99,29 @@ class Category extends Model
             {
                 $sections[]=$ancestor->slug;
             }
-            
-            return route('site.category', implode("/",$sections));
+
+            return implode("/", $sections);
         });
-        
+
+    }
+
+    // Get route
+    public function getRouteAttribute()
+    {
+        return route('site.category', $this->AncestorsList);
+    }
+
+    /**
+     * Get all the products associated with the category
+     */
+    function products()
+    {
+        return $this->belongsToMany(\Modules\Product\Entities\Product::class);
+    }
+    public function getProductsAttribute(){
+        return Cache::remember('categoryProduct'.$this->id, env('CACHE_ITEM', 60), function() {
+            return $this->products()->active()->get();
+        });
     }
 
 }

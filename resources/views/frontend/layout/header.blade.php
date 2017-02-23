@@ -49,35 +49,35 @@
 						<ul>
 							<li class="row">
 								<div class="image">
-									<img src="http://placehold.it/50" class="img-responsive">
+									{{ Html::image('uploads/dummy/50.png') }}
 									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
 								</div>
 								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
 							</li>
 							<li class="row">
 								<div class="image">
-									<img src="http://placehold.it/50" class="img-responsive">
+									{{ Html::image('uploads/dummy/50.png') }}
 									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
 								</div>
 								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
 							</li>
 							<li class="row">
 								<div class="image">
-									<img src="http://placehold.it/50" class="img-responsive">
+									{{ Html::image('uploads/dummy/50.png') }}
 									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
 								</div>
 								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
 							</li>
 							<li class="row">
 								<div class="image">
-									<img src="http://placehold.it/50" class="img-responsive">
+									{{ Html::image('uploads/dummy/50.png') }}
 									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
 								</div>
 								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
 							</li>
 							<li class="row">
 								<div class="image">
-									<img src="http://placehold.it/50" class="img-responsive">
+									{{ Html::image('uploads/dummy/50.png') }}
 									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
 								</div>
 								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
