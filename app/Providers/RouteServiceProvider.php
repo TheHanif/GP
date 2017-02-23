@@ -37,21 +37,27 @@ class RouteServiceProvider extends ServiceProvider
 
              $cacheKey = MD5($route->parameters['parent'].$route->parameters['product']);
              // Get cached item
-             if (Cache::has($cacheKey)) {
+             if (env('CACHE_SINGLE_PRODUCT', false) && Cache::has($cacheKey)) {
                  return Cache::get($cacheKey);
              }
 
+             // Get Single product
              $product = \Modules\Product\Entities\Product::where('slug', $product)
                  ->active()->firstOrFail();
 
              $status = true;
 
+             // Check parent by requested URL
              if (!$this->itemParentAncestors(\Modules\Category\Entities\Category::class, $route->parameters['parent'], 'cat_'.$cacheKey)){
                  $status = false;
              }
 
              if ($status){
+
+                 // Don't cache if you want to display stock count in single product view
+                 if(env('CACHE_SINGLE_PRODUCT', false))
                  Cache::put($cacheKey, $product, env('CACHE_ITEM_URL', 60));
+
                  return $product;
              }
 

@@ -118,5 +118,10 @@ class Category extends Model
     {
         return $this->belongsToMany(\Modules\Product\Entities\Product::class);
     }
+    public function getProductsAttribute(){
+        return Cache::remember('categoryProduct'.$this->id, env('CACHE_ITEM', 60), function() {
+            return $this->products()->active()->get();
+        });
+    }
 
 }

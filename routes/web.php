@@ -27,8 +27,7 @@ Route::group(['as' => 'site.'], function()
     Route::get('/category/{category}', ['as'=>'category', 'uses'=>'SiteController@category'])
         ->where('category', '(.*)');
 
-    // Single product with parent
-    // with Category or Branch
+    // Single product with parent (Categories or Branch)
     Route::get('{parent}/{product}', ['as'=>'product', 'uses'=>'SiteController@product'])
         ->where('product', '(.*)')->where('parent', '(.*)');
 

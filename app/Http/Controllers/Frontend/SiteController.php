@@ -23,13 +23,11 @@ class SiteController extends Controller
      * Category page
      * @param  Category $category
      */
-    public function category(Category $category)
+    public function category(Category $parent)
     {
-        $products = $category->products()->active()->get();
+        $products = $parent->products;
 
-        $page_title = $category->name;
-
-        return view('product::list', compact('products', 'page_title', 'category'));
+        return view('product::list', compact('products', 'parent'));
     }
 
     /**

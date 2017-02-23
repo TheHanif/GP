@@ -16,6 +16,11 @@ class Product extends Model
     {
         return $this->belongsToMany(\Modules\Category\Entities\Category::class);
     }
+    public function getCategoriesAttribute(){
+        return Cache::remember('productCategories'.$this->id, env('CACHE_ITEM', 60), function() {
+            return $this->categories()->get();
+        });
+    }
 
     /**
      * Get all the metas associated with the product
