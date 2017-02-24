@@ -23,6 +23,8 @@ Route::group(['as' => 'site.'], function()
 {
 	Route::get('/', ['as'=>'home', 'uses'=>'SiteController@index']);
 
+    Route::get('/brand/{brand}', ['as'=>'brand', 'uses'=>'SiteController@brand']);
+
     // Using route model binding and wildcard, access hierarchic URL and parse as eloquent model of the category
     Route::get('/category/{category}', ['as'=>'category', 'uses'=>'SiteController@category'])
         ->where('category', '(.*)');

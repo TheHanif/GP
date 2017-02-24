@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Cache;
+use Modules\Brand\Entities\Brand;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -29,9 +30,21 @@ class RouteServiceProvider extends ServiceProvider
 
         parent::boot();
 
-        // Route::bind('category', function($category){
-        //     return \Modules\Category\Entities\Category::where('slug', $category)->first();       
-        // });
+         Route::bind('brand', function($slug, $route){
+             // Generate unique cache key for value
+             $cacheKey = 'brandURI_'.MD5($slug);
+
+             // Get cached item
+             if (Cache::has($cacheKey)) {
+                 return Cache::get($cacheKey);
+             }
+
+             $brand = Brand::where('slug', $slug)->active()->firstOrFail();
+
+             // Add item to cache
+             Cache::put($cacheKey, $brand, env('CACHE_ITEM_URL', 60));
+             return $brand;
+         });
 
          Route::bind('product', function($product, $route){
 
