@@ -22,7 +22,11 @@
             <div class="container">
                 @yield('contens')
             </div>{{-- / .container --}}
-            
+
+            <div class="container">
+                @include('brand::widgets.carousel')
+            </div>{{-- / .container for brands widget --}}
+
             {{-- Footer --}}
             @include('frontend.layout.footer')
 
