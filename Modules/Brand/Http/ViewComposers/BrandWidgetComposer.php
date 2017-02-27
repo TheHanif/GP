@@ -17,11 +17,10 @@ class BrandWidgetComposer
      */
     public function compose(View $view)
     {
-//        $brands = Cache::remember('composer_categories', env('CACHE_WIDGETS', 60), function() {
-//            return Category::select('id','name', 'slug')->firstLevel()->active()->get();
-//        });
+        $brands = Cache::remember('composer_brands', env('CACHE_WIDGETS', 60), function() {
+            return Brand::active()->get();
+        });
 
-
-        $view->with('brands', Brand::all());
+        $view->with('brands', $brands);
     }
 }
