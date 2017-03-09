@@ -36,4 +36,22 @@ class Brand extends Model
             return $this->products()->active()->get();
         });
     }
+
+    /**
+     * Generate Ancestors list for URL and Route
+     */
+    public function getAncestorsListAttribute()
+    {
+        // Brand does not have ancestors like categories,
+        // So we will use slug
+        return $this->slug;
+    }
+
+    /**
+     * This is used in route model binding
+     */
+    public function getAncestorsAttribute()
+    {
+        return collect();
+    }
 }

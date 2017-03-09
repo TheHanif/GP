@@ -48,7 +48,14 @@ class RouteServiceProvider extends ServiceProvider
 
          Route::bind('product', function($product, $route){
 
-             $cacheKey = MD5($route->parameters['parent'].$route->parameters['product']);
+             // We will use these keys to cache parents,
+             // So when requested different product with same parent than parent will be served from cache
+             // There may be an issue if someone changed product end uri and keep the parent, this will be true always
+             // But its best if someone keep viewing products from same parent
+             $routeParent = $route->parameters['parent'];
+             $routeProduct = $route->parameters['product'];
+
+             $cacheKey = MD5($routeParent.$routeProduct);
              // Get cached item
              if (env('CACHE_SINGLE_PRODUCT', false) && Cache::has($cacheKey)) {
                  return Cache::get($cacheKey);
@@ -60,9 +67,17 @@ class RouteServiceProvider extends ServiceProvider
 
              $status = true;
 
-             // Check parent by requested URL
-             if (!$this->itemParentAncestors(\Modules\Category\Entities\Category::class, $route->parameters['parent'], 'cat_'.$cacheKey)){
+             // Check parent by requested URL is for Category
+             if (!$this->itemParentAncestors(\Modules\Category\Entities\Category::class, $route->parameters['parent'], $routeParent)){
                  $status = false;
+             }
+
+             // Check parent by requested URL is for Brand
+             // Only check if failed for category
+             if (!$status && $this->itemParentAncestors(\Modules\Brand\Entities\Brand::class, $route->parameters['parent'], $routeParent)){
+
+                 // Make success if parent Brand found
+                 $status = true;
              }
 
              if ($status){
@@ -99,7 +114,7 @@ class RouteServiceProvider extends ServiceProvider
         $explodedPage = explode("/",$value);
 
         // Get it from DB using last
-        $item = $model::select('id', 'slug', 'name', 'parent_id')->where('slug', last($explodedPage))->active();
+        $item = $model::where('slug', last($explodedPage))->active();
 
         // 404 if not found
         if(!$item->exists()){
