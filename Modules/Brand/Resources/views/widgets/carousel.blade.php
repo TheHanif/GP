@@ -1,9 +1,19 @@
 <div class="widget widget_brand">
+
     <h3 class="widget_title"><span>Brands</span></h3>
 
-    <ul>
+    <div id="owl-brands" class="owl-carousel">
+
         @foreach($brands as $brand)
-            <li><a href="{{$brand->route}}">{{$brand->name}}</a></li>
+
+            <div class="item">
+                <a href="{{$brand->route}}">
+                    {{ Html::image($brand->logo, $brand->name, ['class'=>'img-responsive']) }}
+                </a>
+            </div>
+
         @endforeach
-    </ul>
+
+    </div>
+
 </div>
