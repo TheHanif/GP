@@ -11,18 +11,24 @@ const { mix } = require('laravel-mix');
  |
  */
 
-mix.js(
-	['resources/assets/js/app.js'],
-	'public/js')
-   
+mix
+	// Font Awesome fonts
+    .copy('node_modules/font-awesome/fonts', 'public/assets/fonts')
+
+    // Owl Carousel
+    // .copy('node_modules/owlcarousel/owl-carousel/AjaxLoader.gif', 'public/css')
+    // .copy('node_modules/owlcarousel/owl-carousel/grabbing.png', 'public/css')
+    // .copy('node_modules/owlcarousel/owl-carousel/*.css', 'resources/assets/css/owl-carousel')
+    .copy('node_modules/owlcarousel/owl-carousel/owl.carousel.min.js', 'resources/assets/js/')
+
+	.js(['resources/assets/js/app.js',], 'public/js')
+
    .sass(
    	'resources/assets/sass/app.scss',
    	'public/css')
     .sass(
 	'resources/assets/sass/product_list.scss',
-	'public/css')
-
-.copy('node_modules/font-awesome/fonts', 'public/assets/fonts');
+	'public/css');
 
 // mix.copy('node_modules/vendor/acme.txt', 'public/js/acme.txt');
 

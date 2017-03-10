@@ -16,6 +16,9 @@ class ComposerServiceProvider extends ServiceProvider
     {
         // Main navigation bar
         View::composer( 'frontend.partials.navigation', 'App\Http\ViewComposers\NavigationComposer');
+
+        // Brands widget
+        View::composer( 'brand::widgets.carousel', 'Modules\Brand\Http\ViewComposers\BrandWidgetComposer');
     }
 
     /**
