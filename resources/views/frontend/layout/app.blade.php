@@ -24,7 +24,7 @@
             </div>{{-- / .container --}}
 
             <div class="container">
-                @include('brand::widgets.carousel')
+                @cache('brand::widgets.carousel', null, config('partialcache.expiry'))
             </div>{{-- / .container for brands widget --}}
 
             {{-- Footer --}}
