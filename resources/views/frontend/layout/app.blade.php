@@ -27,6 +27,10 @@
                 @cache('brand::widgets.carousel', null, config('partialcache.expiry'))
             </div>{{-- / .container for brands widget --}}
 
+            <div class="container">
+                @cache('manufacturer::widgets.carousel', null, config('partialcache.expiry'))
+            </div>{{-- / .container for manufacturers widget --}}
+
             {{-- Footer --}}
             @include('frontend.layout.footer')
 

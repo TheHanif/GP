@@ -29,4 +29,16 @@ $(document).ready(function() {
         itemsMobile: [479,1],
     }); // end of #owl-brands
 
+    /**
+     * Setup Owl carousel for Manufacturer widget
+     */
+    $("#owl-manufacturer").owlCarousel({
+        autoPlay: 3000,
+        items: 6,
+        itemsDesktop: [1199, 6],
+        itemsDesktopSmall: [1024, 5],
+        itemsTablet: [768,4],
+        itemsMobile: [479,1],
+    }); // end of #owl-manufacturer
+
 }); // end of ready statement

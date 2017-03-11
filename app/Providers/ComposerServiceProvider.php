@@ -19,6 +19,9 @@ class ComposerServiceProvider extends ServiceProvider
 
         // Brands widget
         View::composer( 'brand::widgets.carousel', 'Modules\Brand\Http\ViewComposers\BrandWidgetComposer');
+
+        // Manufacturer widget
+        View::composer( 'manufacturer::widgets.carousel', 'Modules\Manufacturer\Http\ViewComposers\ManufacturerWidgetComposer');
     }
 
     /**
