@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Cache;
 use Modules\Brand\Entities\Brand;
+use Modules\Manufacturer\Entities\Manufacturer;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -46,6 +47,22 @@ class RouteServiceProvider extends ServiceProvider
              return $brand;
          });
 
+        Route::bind('manufacturer', function($slug, $route){
+            // Generate unique cache key for value
+            $cacheKey = 'manufacturerURI_'.MD5($slug);
+
+            // Get cached item
+            if (Cache::has($cacheKey)) {
+                return Cache::get($cacheKey);
+            }
+
+            $manufacturer = Manufacturer::where('slug', $slug)->active()->firstOrFail();
+
+            // Add item to cache
+            Cache::put($cacheKey, $manufacturer, env('CACHE_ITEM_URL', 60));
+            return $manufacturer;
+        });
+
          Route::bind('product', function($product, $route){
 
              // We will use these keys to cache parents,
@@ -77,6 +94,14 @@ class RouteServiceProvider extends ServiceProvider
              if (!$status && $this->itemParentAncestors(\Modules\Brand\Entities\Brand::class, $route->parameters['parent'], $routeParent)){
 
                  // Make success if parent Brand found
+                 $status = true;
+             }
+
+             // Check parent by requested URL is for Manufacturer
+             // Only check if failed for category
+             if (!$status && $this->itemParentAncestors(\Modules\Manufacturer\Entities\Manufacturer::class, $route->parameters['parent'], $routeParent)){
+
+                 // Make success if parent Manufacturer found
                  $status = true;
              }
 

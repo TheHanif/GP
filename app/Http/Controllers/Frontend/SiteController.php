@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use Modules\Brand\Entities\Brand;
 use Modules\Category\Entities\Category;
+use Modules\Manufacturer\Entities\Manufacturer;
 use Modules\Product\Entities\Product;
 
 class SiteController extends Controller
@@ -41,6 +42,12 @@ class SiteController extends Controller
 
 
     public function brand(Brand $parent){
+        $products = $parent->products;
+
+        return view('product::list', compact('products', 'parent'));
+    }
+
+    public function manufacturer(Manufacturer $parent){
         $products = $parent->products;
 
         return view('product::list', compact('products', 'parent'));
