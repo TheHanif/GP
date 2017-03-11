@@ -1,0 +1,78 @@
+.widget{
+
+	.widget_title{
+		background-color: #F5F5F5;
+
+		color: $whiteLinkColor;
+		font-size: 18px;
+		font-weight: bold;
+		height: 51px;
+		line-height: 51px;
+		margin: 0 0 20px;
+		padding: 0 10px 0 0;
+		position: relative;
+		text-transform: uppercase;
+
+		span{
+			background-color: $primaryColor;
+			padding: 0 20px;
+			display: inline-block;
+		}
+	}
+
+	margin: 0 0 30px;
+
+	.owl-theme .owl-buttons {
+		position: absolute;
+		right: 10px;
+		text-align: center;
+		top: -57px;
+		width: 53px;
+	}
+
+	.owl-theme .owl-buttons .disabled {
+		cursor: default;
+	}
+
+	.owl-theme .owl-buttons [class*="owl-"] {
+	  
+	}
+	
+	.owl-carousel .owl-buttons .owl-prev, .owl-carousel .owl-buttons .owl-next, .owl-carousel .owl-dot {
+		-moz-user-select: none;
+		cursor: pointer;
+	}
+
+	.owl-theme .owl-buttons > div {
+		background: $primaryColor none repeat scroll 0 0;
+	}
+	
+	.owl-theme .owl-buttons > div {
+		color: #fff;
+		float: left;
+		font-size: 0;
+		height: 25px;
+		transition: all 0.3s ease 0s;
+		width: 25px;
+		z-index: 10;
+		margin-left: 1px;
+	}
+
+	.owl-theme .owl-buttons > div::before {
+		-moz-osx-font-smoothing: grayscale;
+		content: "";
+		display: block;
+		font: 14px/25px FontAwesome;
+		text-rendering: auto;
+	}
+
+	.owl-theme .owl-buttons .owl-next::before {
+		content: "";
+	}
+
+	.owl-theme .owl-buttons > div:hover {
+		background-color: $highLightColor;
+		color: #fff;
+	}
+
+}

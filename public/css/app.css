@@ -11447,6 +11447,15 @@ button.close {
   clip: auto;
 }
 
+body {
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.square-borders {
+  border-radius: 0;
+}
+
 /*==============================
 =            TOPBAR            =
 ==============================*/
@@ -11728,13 +11737,79 @@ button.close {
 
 /*=====  End of HEADER MIDDLE  ======*/
 
-body {
-  color: #333;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+.widget {
+  margin: 0 0 30px;
 }
 
-.square-borders {
-  border-radius: 0;
+.widget .widget_title {
+  background-color: #F5F5F5;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: bold;
+  height: 51px;
+  line-height: 51px;
+  margin: 0 0 20px;
+  padding: 0 10px 0 0;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.widget .widget_title span {
+  background-color: #4D90FE;
+  padding: 0 20px;
+  display: inline-block;
+}
+
+.widget .owl-theme .owl-buttons {
+  position: absolute;
+  right: 10px;
+  text-align: center;
+  top: -57px;
+  width: 53px;
+}
+
+.widget .owl-theme .owl-buttons .disabled {
+  cursor: default;
+}
+
+.widget .owl-carousel .owl-buttons .owl-prev,
+.widget .owl-carousel .owl-buttons .owl-next,
+.widget .owl-carousel .owl-dot {
+  -moz-user-select: none;
+  cursor: pointer;
+}
+
+.widget .owl-theme .owl-buttons > div {
+  background: #4D90FE none repeat scroll 0 0;
+}
+
+.widget .owl-theme .owl-buttons > div {
+  color: #fff;
+  float: left;
+  font-size: 0;
+  height: 25px;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  width: 25px;
+  z-index: 10;
+  margin-left: 1px;
+}
+
+.widget .owl-theme .owl-buttons > div::before {
+  -moz-osx-font-smoothing: grayscale;
+  content: "\F104";
+  display: block;
+  font: 14px/25px FontAwesome;
+  text-rendering: auto;
+}
+
+.widget .owl-theme .owl-buttons .owl-next::before {
+  content: "\F105";
+}
+
+.widget .owl-theme .owl-buttons > div:hover {
+  background-color: #FFD200;
+  color: #fff;
 }
 
 /*==============================

@@ -16,6 +16,16 @@
 $fa-font-path: "/assets/fonts";
 @import "node_modules/font-awesome/scss/font-awesome";
 
+
+body{
+  color: $DarkColor;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.square-borders{
+  border-radius: 0;
+}
+
+
 /*==============================
 =            TOPBAR            =
 ==============================*/
@@ -148,13 +158,8 @@ $fa-font-path: "/assets/fonts";
 
 /*=====  End of HEADER MIDDLE  ======*/
 
-body{
-    color: $DarkColor;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-.square-borders{
-	border-radius: 0;
-}
+
+@import "widgets";
 
 /*==============================
 =            Footer            =
