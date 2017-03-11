@@ -25,6 +25,16 @@
     </div>{{-- / Layout .row--}}
 @endsection
 
+
+@push('pagemeta')
+
+    @if($parent->description)
+        <meta name="description" content="{{$parent->description}}">
+    @endif
+    <link rel="canonical" href="{{$parent->route}}" />
+
+@endpush
+
 @push('styles')
     <link rel="stylesheet" href="{{mix('css/product_list.css')}}">
 @endpush
