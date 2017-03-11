@@ -22,6 +22,7 @@ $(document).ready(function() {
      */
     $("#owl-brands").owlCarousel({
         autoPlay: 3000,
+        navigation : true,
         items: 6,
         itemsDesktop: [1199, 6],
         itemsDesktopSmall: [1024, 5],
@@ -34,6 +35,7 @@ $(document).ready(function() {
      */
     $("#owl-manufacturer").owlCarousel({
         autoPlay: 3000,
+        navigation : true,
         items: 6,
         itemsDesktop: [1199, 6],
         itemsDesktopSmall: [1024, 5],
