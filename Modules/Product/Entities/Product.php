@@ -31,6 +31,15 @@ class Product extends Model
     }
 
     /**
+     * Get single meta by key
+     */
+    public function meta($key)
+    {
+        $value = $this->metas()->select('meta_value')->where('meta_key', $key)->first();
+        return $value ? $value['meta_value'] : null;
+    }    
+
+    /**
      * With status active
      */
     public function scopeActive($query)
