@@ -3,32 +3,102 @@
 @section('title', $product->meta('title') ? $product->meta('title') : $product->name)
 
 @section('contens')
+
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-9">
 
-            <h1>{{$product->route}}</h1>
+            <div class="row product-detail">
+            	<div class="col-md-5">
+					<div id="owl-productImages">
+						@foreach($product->images as $image)
+							<div class="item">
+								{{Html::image($image->path.$image->name, null, ['class'=>'img-responsive'])}}
+							</div>
+						@endforeach
+					</div> {{-- / #owl-productImages --}}
+				</div>
+            	<div class="col-md-7">
+					<h1 class="product-name">{{ $product->name }}</h1>
+					<div class="ratings">
+						<ul>
+							<li class="active"><i class="fa fa-star"></i></li>
+							<li class="active"><i class="fa fa-star"></i></li>
+							<li class="active"><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+						</ul>
+						<span class="reviews">(1 Customer review)</span>
+					</div>{{-- / .ratings --}}
 
-        </div>
+					<div class="price-box">PKR {{$product->sale_price}}</div>
+
+					<p class="description">{{ $product->description }}</p>
+
+					<button class="btn btn-primary">ADD TO CART</button>
+
+					<hr>
+					<p><strong>SKU:</strong> <span>{{ $product->sku }}</span></p>
+					<p><strong>Categories:</strong>
+						@foreach($product->categories as $category)
+							<a href="{{ $category->route }}">{{ $category->name }}</a>@if(!$loop->last), @endif
+						@endforeach
+					</p>
+					<hr>
+
+				</div>
+            </div>{{-- / .product-detail --}}
+
+            <div class="product-tabs">
+            	<div role="tabpanel">
+            		<!-- Nav tabs -->
+            		<ul class="nav nav-tabs" role="tablist">
+            			<li role="presentation" class="active">
+            				<a href="#Description" aria-controls="Description" role="tab" data-toggle="tab">Description</a>
+            			</li>
+            			<li role="presentation">
+            				<a href="#Reviews" aria-controls="Reviews" role="tab" data-toggle="tab">Reviews</a>
+            			</li>
+            		</ul>
+            	
+            		<!-- Tab panes -->
+            		<div class="tab-content">
+            			<div role="tabpanel" class="tab-pane active" id="Description">Description</div>
+            			<div role="tabpanel" class="tab-pane" id="Reviews">Reviews</div>
+            		</div>
+            	</div>
+            </div>{{-- / .product-tabs --}}
+
+            @include('product::widgets.related', ['product'=>$product, 'parent'=>$parent])
+
+        </div>{{-- / Detail --}}
+
+        <div class="col-md-3">
+        	Sidebar
+        </div>{{-- / Sidebar  --}}
+
     </div>{{-- / Layout .row--}}
 @endsection
 
 @push('pagemeta')
 
-	@if($product->meta('description'))
-		<meta name="description" content="{{$product->meta('description')}}">
-	@endif
+	<meta name="description" content="{{ $product->meta_description }}">
 	<link rel="canonical" href="{{$product->route}}" />
 
 @endpush
 
 
 @push('styles')
-
 @endpush
 
 
 @push('scripts')
-
+	<script>
+        $("#owl-productImages").owlCarousel({
+            autoPlay: 3000,
+            navigation : true,
+            items: 1,
+        }); // end of #owl-brands
+	</script>
 @endpush
 
 

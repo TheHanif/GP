@@ -36,8 +36,11 @@ class SiteController extends Controller
      * @param $parent may be branch or category URI string
      * @param Product $product
      */
-    function product($parent, Product $product){
-        return view('product::single', compact('product'));
+    function product($parent, $item){
+
+        $product = $item['product'];
+        $parent = $item['parent'];
+        return view('product::single', compact('product', 'parent'));
     }
 
 
