@@ -87,3 +87,19 @@
 		}
 	}
 }
+
+.widget_sidebar{
+	.widget_title{
+		padding: 0;
+		font-size: 16px;
+		font-weight: 500;
+		height: 40px;
+		line-height: 40px;
+		span{
+			display: block;
+		}
+	}
+}
+.widget.widget_sidebar .product-wrapper {
+	margin: 0px;
+}
