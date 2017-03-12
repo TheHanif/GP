@@ -11453,7 +11453,7 @@ body {
 }
 
 .square-borders {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
 .ratings ul {
@@ -12116,6 +12116,14 @@ body {
 
 .product-tabs {
   margin: 40px 0;
+}
+
+.product-tabs .tab-pane {
+  border: solid 1px #ddd;
+  border-top: none;
+  padding: 15px;
+  box-shadow: 0 1px 2px #ddd;
+  margin-top: -1px;
 }
 
 /*==============================
