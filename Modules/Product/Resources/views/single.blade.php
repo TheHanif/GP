@@ -1,6 +1,6 @@
 @extends('frontend.layout.app')
 
-@section('title', $product->meta('title') ? $product->meta('title') : $product->name)
+@section('title', $product->meta('title') ?: $product->name)
 
 @section('contens')
 
@@ -53,16 +53,18 @@
             		<!-- Nav tabs -->
             		<ul class="nav nav-tabs" role="tablist">
             			<li role="presentation" class="active">
-            				<a href="#Description" aria-controls="Description" role="tab" data-toggle="tab">Description</a>
+            				<a href="#Description" class="square-borders" aria-controls="Description" role="tab" data-toggle="tab">Description</a>
             			</li>
             			<li role="presentation">
-            				<a href="#Reviews" aria-controls="Reviews" role="tab" data-toggle="tab">Reviews</a>
+            				<a href="#Reviews" class="square-borders" aria-controls="Reviews" role="tab" data-toggle="tab">Reviews</a>
             			</li>
             		</ul>
             	
             		<!-- Tab panes -->
             		<div class="tab-content">
-            			<div role="tabpanel" class="tab-pane active" id="Description">Description</div>
+            			<div role="tabpanel" class="tab-pane active" id="Description">
+							{!! $product->long_description ?: 'No description' !!}
+						</div>
             			<div role="tabpanel" class="tab-pane" id="Reviews">Reviews</div>
             		</div>
             	</div>

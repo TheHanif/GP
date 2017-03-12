@@ -51,6 +51,12 @@ class Product extends Model
         });
     }
 
+    public function getLongDescriptionAttribute(){
+        return Cache::remember('productLongDescription'.$this->id, env('CACHE_ITEM', 60), function() {
+            return $this->meta('long_description');
+        });
+    }
+
     /**
      * With status active
      */
