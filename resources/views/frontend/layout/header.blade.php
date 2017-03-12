@@ -37,7 +37,7 @@
 				<div class="input-group header-search">
 					<input type="text" class="form-control square-borders" id="exampleInputAmount" placeholder="Search">
 					<span class="input-group-btn">
-						<button type="button" class="btn btn-default square-borders">Go!</button>
+						<button type="button" class="btn btn-theme btn-default square-borders"><i class="fa fa-search"></i></button>
 					</span>
 				</div>
 			</div>

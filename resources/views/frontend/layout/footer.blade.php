@@ -51,10 +51,10 @@
 				<div class="form-group">
 					<div class="col-sm-3"><label for="newsletter" class="label-input">NEWSLETTER</label></div>
 					<div class="col-sm-9">
-						<div class="input-group header-search">
+						<div class="input-group">
 							<input type="email" class="form-control square-borders" id="newsletter" placeholder="Subscribe for our newsletter">
 							<span class="input-group-btn">
-								<button type="button" class="btn btn-default square-borders">Go!</button>
+								<button type="button" class="btn btn-default btn-theme square-borders"><i class="fa fa-envelope-o"></i></button>
 							</span>
 						</div>
 					</div>

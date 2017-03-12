@@ -75,4 +75,15 @@
 		color: #fff;
 	}
 
+
+}
+#owl-brands, #owl-manufacturer{
+	.owl-item .item{
+		text-align: center;
+
+		a{
+			display: inline-block;
+			border: #ccc 1px solid;
+		}
+	}
 }
