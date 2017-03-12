@@ -48,6 +48,10 @@
 				</div>
             </div>{{-- / .product-detail --}}
 
+			<div class="well well-sm square-borders product-disclaimer">
+				<small>*We try to make sure that all product pictures, prices and pack sizes are accurate. However, these specifications are subject to change without prior notice. Actual product packaging and prices will be as per the latest policy of brand/respective company.</small>
+			</div>
+
             <div class="product-tabs">
             	<div role="tabpanel">
             		<!-- Nav tabs -->
@@ -75,7 +79,7 @@
         </div>{{-- / Detail --}}
 
         <div class="col-md-3">
-        	Sidebar
+			@include('product::partials.sidebar')
         </div>{{-- / Sidebar  --}}
 
     </div>{{-- / Layout .row--}}

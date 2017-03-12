@@ -11856,11 +11856,28 @@ body {
   border: #ccc 1px solid;
 }
 
+.widget_sidebar .widget_title {
+  padding: 0;
+  font-size: 16px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 40px;
+}
+
+.widget_sidebar .widget_title span {
+  display: block;
+}
+
+.widget.widget_sidebar .product-wrapper {
+  margin: 0px;
+}
+
 .product-wrapper {
   background-color: #fff;
   padding-bottom: 15px;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
+  margin-bottom: 15px !important;
 }
 
 .product-wrapper .product-image {
@@ -12124,6 +12141,10 @@ body {
   padding: 15px;
   box-shadow: 0 1px 2px #ddd;
   margin-top: -1px;
+}
+
+.product-disclaimer {
+  margin-top: 40px;
 }
 
 /*==============================
