@@ -75,7 +75,7 @@ class RouteServiceProvider extends ServiceProvider
              $cacheKey = MD5($routeParent.$routeProduct);
              // Get cached item
              if (env('CACHE_SINGLE_PRODUCT', false) && Cache::has($cacheKey)) {
-                 return Cache::get($cacheKey);
+                 // return Cache::get($cacheKey);
              }
 
              // Get Single product
@@ -85,13 +85,13 @@ class RouteServiceProvider extends ServiceProvider
              $status = true;
 
              // Check parent by requested URL is for Category
-             if (!$this->itemParentAncestors(\Modules\Category\Entities\Category::class, $route->parameters['parent'], $routeParent)){
+             if (!$parent = $this->itemParentAncestors(\Modules\Category\Entities\Category::class, $route->parameters['parent'], 'cat_'.$routeParent)){
                  $status = false;
              }
 
              // Check parent by requested URL is for Brand
              // Only check if failed for category
-             if (!$status && $this->itemParentAncestors(\Modules\Brand\Entities\Brand::class, $route->parameters['parent'], $routeParent)){
+             if (!$status && $parent = $this->itemParentAncestors(\Modules\Brand\Entities\Brand::class, $route->parameters['parent'], 'bra_'.$routeParent)){
 
                  // Make success if parent Brand found
                  $status = true;
@@ -99,7 +99,7 @@ class RouteServiceProvider extends ServiceProvider
 
              // Check parent by requested URL is for Manufacturer
              // Only check if failed for category
-             if (!$status && $this->itemParentAncestors(\Modules\Manufacturer\Entities\Manufacturer::class, $route->parameters['parent'], $routeParent)){
+             if (!$status && $parent = $this->itemParentAncestors(\Modules\Manufacturer\Entities\Manufacturer::class, $route->parameters['parent'], 'man_'.$routeParent)){
 
                  // Make success if parent Manufacturer found
                  $status = true;
@@ -107,11 +107,15 @@ class RouteServiceProvider extends ServiceProvider
 
              if ($status){
 
+                $item = array();
+                $item['product'] = $product;
+                $item['parent'] = $parent;
+
                  // Don't cache if you want to display stock count in single product view
                  if(env('CACHE_SINGLE_PRODUCT', false))
-                 Cache::put($cacheKey, $product, env('CACHE_ITEM_URL', 60));
+                 Cache::put($cacheKey, $item, env('CACHE_ITEM_URL', 60));
 
-                 return $product;
+                 return $item;
              }
 
          });

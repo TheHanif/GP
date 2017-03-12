@@ -95,6 +95,5 @@
 
 	{{-- @include('frontend.partials.navigation') --}}
 	@cache('frontend.partials.navigation', null, config('partialcache.expiry'))
-	
 
 </header>

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "./";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10304,8 +10304,8 @@ return jQuery;
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+__webpack_require__(3);
 __webpack_require__(4);
-__webpack_require__(5);
 
 /**
  * Main navigation mega dropdown
@@ -10352,16 +10352,10 @@ $(document).ready(function () {
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {
-window._ = __webpack_require__(7);
+window._ = __webpack_require__(6);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -10371,7 +10365,7 @@ window._ = __webpack_require__(7);
 
 window.$ = __webpack_provided_window_dot_jQuery = __webpack_require__(0);
 
-__webpack_require__(6);
+__webpack_require__(5);
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -10409,7 +10403,7 @@ __webpack_require__(6);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {"function" !== typeof Object.create && (Object.create = function (f) {
@@ -10699,7 +10693,7 @@ __webpack_require__(6);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {/*!
@@ -13083,7 +13077,7 @@ if (typeof jQuery === 'undefined') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -30172,10 +30166,10 @@ if (typeof jQuery === 'undefined') {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(9)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(8)(module)))
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports) {
 
 var g;
@@ -30202,7 +30196,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -30230,12 +30224,11 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-__webpack_require__(2);
-module.exports = __webpack_require__(3);
+module.exports = __webpack_require__(2);
 
 
 /***/ })
