@@ -40,6 +40,19 @@ body{
   }
 }
 
+.btn-theme{
+  background-color: $primaryColor;
+  color: $whiteLinkColor;
+}
+.btn-theme:hover{
+  background-color: $highLightColor;
+  color: $whiteLinkColor;
+  border-color: #ccc;
+  transition: all 0.3s ease 0s;
+}
+.btn{
+  line-height:1.56;
+}
 
 
 /*==============================

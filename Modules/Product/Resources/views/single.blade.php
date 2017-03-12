@@ -34,7 +34,7 @@
 
 					<p class="description">{{ $product->description }}</p>
 
-					<button class="btn btn-primary">ADD TO CART</button>
+					<button class="btn btn-theme btn-default square-borders">ADD TO CART</button>
 
 					<hr>
 					<p><strong>SKU:</strong> <span>{{ $product->sku }}</span></p>

@@ -11472,6 +11472,23 @@ body {
   color: goldenrod;
 }
 
+.btn-theme {
+  background-color: #4D90FE;
+  color: #FFF;
+}
+
+.btn-theme:hover {
+  background-color: #FFD200;
+  color: #FFF;
+  border-color: #ccc;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.btn {
+  line-height: 1.56;
+}
+
 /*==============================
 =            TOPBAR            =
 ==============================*/
@@ -11826,6 +11843,17 @@ body {
 .widget .owl-theme .owl-buttons > div:hover {
   background-color: #FFD200;
   color: #fff;
+}
+
+#owl-brands .owl-item .item,
+#owl-manufacturer .owl-item .item {
+  text-align: center;
+}
+
+#owl-brands .owl-item .item a,
+#owl-manufacturer .owl-item .item a {
+  display: inline-block;
+  border: #ccc 1px solid;
 }
 
 .product-wrapper {
