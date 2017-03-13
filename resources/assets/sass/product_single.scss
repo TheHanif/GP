@@ -1,0 +1,116 @@
+.product-detail{
+  .owl-theme .owl-buttons {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    opacity: 0;
+    transition: all 0.3s ease 0s;
+  }:hover{
+       .owl-buttons{
+         opacity: 1;
+       }
+     }
+
+  .owl-theme .owl-buttons .disabled {
+    cursor: default;
+  }
+
+  .owl-theme .owl-buttons [class*="owl-"] {
+
+  }
+
+  .owl-carousel .owl-buttons .owl-prev, .owl-carousel .owl-buttons .owl-next, .owl-carousel .owl-dot {
+    -moz-user-select: none;
+    cursor: pointer;
+  }
+
+  .owl-theme .owl-buttons > div {
+    background: $primaryColor none repeat scroll 0 0;
+  }
+
+  .owl-theme .owl-buttons > div {
+    color: #fff;
+    float: left;
+    font-size: 0;
+    height: 25px;
+    transition: all 0.3s ease 0s;
+    width: 25px;
+    z-index: 10;
+    margin-left: 1px;
+  }
+
+  .owl-theme .owl-buttons > div::before {
+    -moz-osx-font-smoothing: grayscale;
+    content: "";
+    display: block;
+    font: 14px/25px FontAwesome;
+    text-rendering: auto;
+  }
+
+  .owl-theme .owl-buttons .owl-next::before {
+    content: "";
+  }
+  .owl-theme .owl-buttons .owl-next{
+    float: right;
+  }
+
+  .owl-theme .owl-buttons > div:hover {
+    background-color: $highLightColor;
+    color: #fff;
+  }
+
+  .ratings{
+    ul{
+      float: left;
+      text-align: left;
+    }
+    .reviews{
+      color: #969696;
+      font-size: 12px;
+      padding-left: 10px;
+    }
+    margin-bottom: 20px;
+  }
+
+  .product-name{
+    font-size: 1.8em;
+    color: $DarkColor;
+  }
+
+  .price-box{
+    font-size: 18px;
+    color: $primaryColor;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  p{
+    margin: 0;
+    font-size: 13px;
+    color: $DarkColor;
+  }
+  .description{
+    margin: 10px 0;
+    font-size: 15px;
+    color: $DarkColor;
+  }
+  hr{
+    margin: 10px 0;
+  }
+
+}
+.product-tabs{
+  margin: 40px 0;
+
+  .tab-pane{
+    border: solid 1px #ddd;
+    border-top: none;
+    padding: 15px;
+    box-shadow: 0 1px 2px #ddd;
+    margin-top: -1px;
+  }
+}
+.product-disclaimer{
+  margin-top: 40px;
+}

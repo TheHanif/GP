@@ -75,4 +75,31 @@
 		color: #fff;
 	}
 
+
+}
+#owl-brands, #owl-manufacturer{
+	.owl-item .item{
+		text-align: center;
+
+		a{
+			display: inline-block;
+			border: #ccc 1px solid;
+		}
+	}
+}
+
+.widget_sidebar{
+	.widget_title{
+		padding: 0;
+		font-size: 16px;
+		font-weight: 500;
+		height: 40px;
+		line-height: 40px;
+		span{
+			display: block;
+		}
+	}
+}
+.widget.widget_sidebar .product-wrapper {
+	margin: 0px;
 }

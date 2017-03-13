@@ -15,12 +15,18 @@
 		
 				<div class="collapse navbar-collapse top-bar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">My Account</a></li>
-						<li><a href="#">Wishlist</a></li>
-						<li><a href="#">Checkout</a></li>
-						<li><a href="#">Cart</a></li>
-						<li><a href="#">Track my order</a></li>
-						<li><a href="#">Help</a></li>
+						<li class="dropdown" ><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> My Account</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">My Orders</a></li>
+								<li><a href="#">Edit Profile</a></li>
+								<li><a href="#">Change password</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+						<li><a href="#"><i class="fa fa-money"></i> Checkout</a></li>
+						<li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+						<li><a href="#"><i class="fa fa-search"></i> Track my order</a></li>
+						<li><a href="#"><i class="fa fa-book"></i> Help</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</nav>
@@ -37,7 +43,7 @@
 				<div class="input-group header-search">
 					<input type="text" class="form-control square-borders" id="exampleInputAmount" placeholder="Search">
 					<span class="input-group-btn">
-						<button type="button" class="btn btn-default square-borders">Go!</button>
+						<button type="button" class="btn btn-theme btn-default square-borders"><i class="fa fa-search"></i></button>
 					</span>
 				</div>
 			</div>
@@ -95,6 +101,5 @@
 
 	{{-- @include('frontend.partials.navigation') --}}
 	@cache('frontend.partials.navigation', null, config('partialcache.expiry'))
-	
 
 </header>

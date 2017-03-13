@@ -25,10 +25,7 @@ mix
 
    .sass(
    	'resources/assets/sass/app.scss',
-   	'public/css')
-    .sass(
-	'resources/assets/sass/product_list.scss',
-	'public/css');
+   	'public/css');
 
 // mix.copy('node_modules/vendor/acme.txt', 'public/js/acme.txt');
 

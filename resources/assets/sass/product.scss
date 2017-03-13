@@ -1,10 +1,8 @@
-// Variables
-@import "variables";
-
 .product-wrapper{
   background-color: #fff;
   padding-bottom: 15px;
   transition: all 0.2s linear ;
+  margin-bottom: 15px !important;
 
   .product-image{
     //max-width: 300px;
@@ -90,22 +88,6 @@
     }
   }
 
-  .ratings{
-    ul{
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      text-align: center;
-      li{
-        display: inline-block;
-        color: lightgray;
-      }.active{
-         color: goldenrod;
-       }
-    }
-
-  }
-
   .price-box{
     text-align: center;
     font-size: 18px;
@@ -134,5 +116,27 @@
     .actions{
       bottom: 0;
     }
+  }
+}
+
+.widget .product-wrapper{
+  margin: 5px;
+
+  .product-image{
+    height: 200px;
+  }
+
+  .product-name{
+    a{
+      font-size: 0.5em;
+    }
+  }
+
+  .price-box{
+    font-size: 16px;
+  }
+
+  .ratings{
+    font-size: 12px;
   }
 }

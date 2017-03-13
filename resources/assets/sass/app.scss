@@ -22,7 +22,36 @@ body{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .square-borders{
-  border-radius: 0;
+  border-radius: 0 !important;
+}
+
+.ratings{
+  ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    li{
+      display: inline-block;
+      color: lightgray;
+    }.active{
+       color: goldenrod;
+     }
+  }
+}
+
+.btn-theme{
+  background-color: $primaryColor;
+  color: $whiteLinkColor;
+}
+.btn-theme:hover{
+  background-color: $highLightColor;
+  color: $whiteLinkColor;
+  border-color: #ccc;
+  transition: all 0.3s ease 0s;
+}
+.btn{
+  line-height:1.56;
 }
 
 
@@ -160,6 +189,8 @@ body{
 
 
 @import "widgets";
+@import "product";
+@import "product_single";
 
 /*==============================
 =            Footer            =

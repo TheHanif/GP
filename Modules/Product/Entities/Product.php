@@ -37,7 +37,25 @@ class Product extends Model
     {
         $value = $this->metas()->select('meta_value')->where('meta_key', $key)->first();
         return $value ? $value['meta_value'] : null;
-    }    
+    }
+
+    public function getDescriptionAttribute(){
+        return Cache::remember('productDescription'.$this->id, env('CACHE_ITEM', 60), function() {
+            return $this->meta('description');
+        });
+    }
+
+    public function getMetaDescriptionAttribute(){
+        return Cache::remember('productMetaDescription'.$this->id, env('CACHE_ITEM', 60), function() {
+            return $this->meta('meta_description');
+        });
+    }
+
+    public function getLongDescriptionAttribute(){
+        return Cache::remember('productLongDescription'.$this->id, env('CACHE_ITEM', 60), function() {
+            return $this->meta('long_description');
+        });
+    }
 
     /**
      * With status active
@@ -101,6 +119,18 @@ class Product extends Model
     {
         return Cache::remember('productURL'.$this->id, env('CACHE_ITEM', 60), function() {
             return route('site.product', [$this->categories->last()->AncestorsList, $this->slug]);
+        });
+    }
+
+    /**
+     * Related Products
+     */
+    public function related(){
+        return $this->belongsToMany(Product::class, 'related_products', 'product_id', 'related_id')->active();
+    }
+    public function getRelatedAttribute(){
+        return Cache::remember('productRelated'.$this->id, env('CACHE_ITEM', 60), function() {
+            return $this->related()->get();
         });
     }
 }
