@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "./";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10322,9 +10322,8 @@ module.exports = g;
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
 /* WEBPACK VAR INJECTION */(function(jQuery, $) {
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -10332,9 +10331,9 @@ module.exports = g;
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(4);
 __webpack_require__(5);
-__webpack_require__(24);
+__webpack_require__(6);
+__webpack_require__(7);
 
 /**
  * Main navigation mega dropdown
@@ -10371,7 +10370,7 @@ $(document).ready(function () {
     itemsMobile: [479, 1]
   }); // end of #owl-manufacturer
 }); // end of ready statement
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0), __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(0)))
 
 /***/ }),
 /* 3 */
@@ -10381,10 +10380,33 @@ $(document).ready(function () {
 
 /***/ }),
 /* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    props: ['cart']
+};
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {
-window._ = __webpack_require__(7);
+window._ = __webpack_require__(9);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -10394,7 +10416,7 @@ window._ = __webpack_require__(7);
 
 window.$ = __webpack_provided_window_dot_jQuery = __webpack_require__(0);
 
-__webpack_require__(6);
+__webpack_require__(8);
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -10402,7 +10424,7 @@ __webpack_require__(6);
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = __webpack_require__(9);
+window.Vue = __webpack_require__(14);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -10432,7 +10454,7 @@ window.Vue = __webpack_require__(9);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {"function" !== typeof Object.create && (Object.create = function (f) {
@@ -10722,7 +10744,44 @@ window.Vue = __webpack_require__(9);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 6 */
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_cartWidget_vue__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_cartWidget_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_cartWidget_vue__);
+
+
+Vue.component('cart-list', __WEBPACK_IMPORTED_MODULE_0__components_cartWidget_vue___default.a);
+new Vue({
+    el: '#wrapper',
+
+    data: {
+        cart: [{ id: 1, name: 'Test 1', quantity: 1, price: 10.02, thumbnail: 'http://grocery.local/uploads/dummy/50.png', route: '#' }, { id: 2, name: 'Test 2', quantity: 5, price: 15.99, thumbnail: 'http://grocery.local/uploads/dummy/50.png', route: '#' }]
+    },
+
+    computed: {
+        totalItems: function totalItems() {
+            return this.cart.length;
+        },
+        cartAmount: function cartAmount() {
+            var cartAmount = 0;
+            var totals = this.cart.map(function (item) {
+                return item.quantity * item.price;
+            });
+
+            totals.forEach(function (el) {
+                cartAmount += el;
+            });
+
+            return cartAmount;
+        }
+    }
+});
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {/*!
@@ -13106,7 +13165,7 @@ if (typeof jQuery === 'undefined') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -30195,10 +30254,10 @@ if (typeof jQuery === 'undefined') {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(15)(module)))
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -30384,7 +30443,135 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 9 */
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(12)(
+  /* script */
+  __webpack_require__(4),
+  /* template */
+  __webpack_require__(13),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Volumes/Secondary/Sites/Grocery/resources/assets/js/components/cartWidget.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] cartWidget.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-965aad8e", Component.options)
+  } else {
+    hotAPI.reload("data-v-965aad8e", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  scopeId,
+  cssModules
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  // inject cssModules
+  if (cssModules) {
+    var computed = options.computed || (options.computed = {})
+    Object.keys(cssModules).forEach(function (key) {
+      var module = cssModules[key]
+      computed[key] = function () { return module }
+    })
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.cart.length > 0) ? _c('ul', _vm._l((_vm.cart), function(item) {
+    return _c('li', {
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "image"
+    }, [_c('img', {
+      attrs: {
+        "src": item.thumbnail,
+        "alt": ""
+      }
+    }), _vm._v(" "), _vm._m(0, true)]), _vm._v(" "), _c('div', {
+      staticClass: "detail"
+    }, [_c('a', {
+      attrs: {
+        "href": item.route
+      }
+    }, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('small', [_vm._v(_vm._s(item.quantity) + " x PKR " + _vm._s(item.price))])])])
+  })) : _vm._e()
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    attrs: {
+      "href": "#",
+      "title": "Remove this item from cart"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-trash-o"
+  })])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-965aad8e", module.exports)
+  }
+}
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38957,10 +39144,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(1)))
 
 /***/ }),
-/* 10 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -38988,208 +39175,12 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 11 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(2);
 module.exports = __webpack_require__(3);
 
-
-/***/ }),
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = {
-    props: ['cart']
-};
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(22)(
-  /* script */
-  __webpack_require__(20),
-  /* template */
-  __webpack_require__(23),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Volumes/Secondary/Sites/Grocery/resources/assets/js/components/cartWidget.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] cartWidget.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-965aad8e", Component.options)
-  } else {
-    hotAPI.reload("data-v-965aad8e", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports) {
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  scopeId,
-  cssModules
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  // inject cssModules
-  if (cssModules) {
-    var computed = options.computed || (options.computed = {})
-    Object.keys(cssModules).forEach(function (key) {
-      var module = cssModules[key]
-      computed[key] = function () { return module }
-    })
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.cart.length > 0) ? _c('ul', _vm._l((_vm.cart), function(item) {
-    return _c('li', {
-      staticClass: "row"
-    }, [_c('div', {
-      staticClass: "image"
-    }, [_c('img', {
-      attrs: {
-        "src": item.thumbnail,
-        "alt": ""
-      }
-    }), _vm._v(" "), _vm._m(0, true)]), _vm._v(" "), _c('div', {
-      staticClass: "detail"
-    }, [_c('a', {
-      attrs: {
-        "href": item.route
-      }
-    }, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('small', [_vm._v(_vm._s(item.quantity) + " x PKR " + _vm._s(item.price))])])])
-  })) : _vm._e()
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    attrs: {
-      "href": "#",
-      "title": "Remove this item from cart"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-trash-o"
-  })])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-965aad8e", module.exports)
-  }
-}
-
-/***/ }),
-/* 24 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_cartWidget_vue__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_cartWidget_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_cartWidget_vue__);
-
-
-Vue.component('cart-list', __WEBPACK_IMPORTED_MODULE_0__components_cartWidget_vue___default.a);
-new Vue({
-    el: '#wrapper',
-
-    data: {
-        cart: [{ id: 1, name: 'Test 1', quantity: 1, price: 10.02, thumbnail: 'http://grocery.local/uploads/dummy/50.png', route: '#' }, { id: 2, name: 'Test 2', quantity: 5, price: 15.99, thumbnail: 'http://grocery.local/uploads/dummy/50.png', route: '#' }]
-    },
-
-    computed: {
-        totalItems: function totalItems() {
-            return this.cart.length;
-        },
-        cartAmount: function cartAmount() {
-            var cartAmount = 0;
-            var totals = this.cart.map(function (item) {
-                return item.quantity * item.price;
-            });
-
-            totals.forEach(function (el) {
-                cartAmount += el;
-            });
-
-            return cartAmount;
-        }
-    }
-});
 
 /***/ })
 /******/ ]);

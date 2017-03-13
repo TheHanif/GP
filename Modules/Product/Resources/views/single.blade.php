@@ -3,7 +3,6 @@
 @section('title', $product->meta('title') ?: $product->name)
 
 @section('content')
-
     <div class="row">
         <div class="col-md-9">
 
@@ -27,7 +26,9 @@
 							<li><i class="fa fa-star"></i></li>
 							<li><i class="fa fa-star"></i></li>
 						</ul>
+
 						<span class="reviews">( 2 Customer {{ str_plural('review', 2) }} )</span>
+
 					</div>{{-- / .ratings --}}
 
 					<div class="price-box">PKR {{$product->sale_price}}</div>
