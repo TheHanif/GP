@@ -35,9 +35,8 @@
 
 					<p class="description">{{ $product->description }}</p>
 
-					{!! Form::open(['route'=>'cart.add', 'class'=>'form-horizontal', 'id'=>'AddToCart']) !!}
-						{!! Form::text('quantity', 1, ['class'=>'form-quantity']) !!}
-						{!! Form::hidden('product_id', $product->id) !!}
+					{!! Form::open(['v-on:submit.prevent'=>'AddToCart('.$product->id.')']) !!}
+						{!! Form::text('quantity', 1, ['class'=>'form-quantity', 'v-model'=>'item.quantity']) !!}
 						{!! Form::submit('ADD TO CART', ['class'=>'btn btn-theme btn-default square-borders']) !!}
 					{!! Form::close() !!}
 
