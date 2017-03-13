@@ -6,4 +6,5 @@ Route::group(['middleware' => 'web', 'prefix' => 'cart', 'namespace' => 'Modules
     Route::get('widget', 'CartController@widget');
 
     Route::post('/add', ['as'=>'cart.add', 'uses'=>'CartController@add']);
+    Route::get('/remove/{key}', ['as'=>'cart.remove', 'uses'=>'CartController@remove']);
 });

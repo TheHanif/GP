@@ -40,6 +40,10 @@ new Vue({
                 this.item = {quantity: 1, product_id: null}
             });
         },
+
+        AddToCartDirect(product_id){
+            this.AddToCart(product_id);
+        },
     },
 
     computed: {

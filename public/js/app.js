@@ -10398,7 +10398,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = {
-    props: ['cart']
+    props: ['cart'],
+    methods: {
+        DeleteCartItem: function DeleteCartItem(key) {
+            var _this = this;
+
+            this.$http.get('/cart/remove/' + key).then(function (response) {
+                if (response.status == 200) {
+                    _this.cart.splice(key, 1);
+                }
+            });
+        }
+    }
 };
 
 /***/ }),
@@ -10799,6 +10810,9 @@ new Vue({
                 _this2.cart.push(response.data);
                 _this2.item = { quantity: 1, product_id: null };
             });
+        },
+        AddToCartDirect: function AddToCartDirect(product_id) {
+            this.AddToCart(product_id);
         }
     },
 
@@ -30578,7 +30592,7 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.cart.length > 0) ? _c('ul', _vm._l((_vm.cart), function(item) {
+  return (_vm.cart.length > 0) ? _c('ul', _vm._l((_vm.cart), function(item, key) {
     return _c('li', {
       staticClass: "row"
     }, [_c('div', {
@@ -30589,7 +30603,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": item.thumbnail,
         "alt": ""
       }
-    }), _vm._v(" "), _vm._m(0, true)]), _vm._v(" "), _c('div', {
+    }), _vm._v(" "), _c('a', {
+      attrs: {
+        "href": "#",
+        "title": "Remove this item from cart"
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.DeleteCartItem(key)
+        }
+      }
+    }, [_c('i', {
+      staticClass: "fa fa-trash-o"
+    })])]), _vm._v(" "), _c('div', {
       staticClass: "detail"
     }, [_c('a', {
       attrs: {
@@ -30597,16 +30624,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('small', [_vm._v(_vm._s(item.quantity) + " x PKR " + _vm._s(item.price))])])])
   })) : _vm._e()
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    attrs: {
-      "href": "#",
-      "title": "Remove this item from cart"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-trash-o"
-  })])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

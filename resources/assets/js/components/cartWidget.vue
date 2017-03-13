@@ -1,9 +1,9 @@
 <template>
     <ul v-if="cart.length > 0">
-        <li class="row" v-for="item in cart">
+        <li class="row" v-for="(item, key) in cart">
             <div class="image">
                 <img v-bind:src="item.thumbnail" alt="" class="img-responsive" />
-                <a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
+                <a href="#" @click.prevent="DeleteCartItem(key)" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
             </div>
             <div class="detail"><a v-bind:href="item.route">{{ item.name }}</a> <br> <small>{{ item.quantity }} x PKR {{ item.price }}</small></div>
         </li>
@@ -13,5 +13,14 @@
 <script>
     export default {
         props: ['cart'],
+        methods: {
+            DeleteCartItem: function(key){
+                this.$http.get('/cart/remove/'+key).then((response) => {
+                    if(response.status == 200){
+                        this.cart.splice(key, 1);
+                    }
+                });
+            }
+        }
     }
 </script>

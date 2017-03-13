@@ -2,7 +2,7 @@
 
 namespace Modules\Cart\Http\Controllers;
 
-use Illuminate\Contracts\Session\Session;
+//use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -42,6 +42,14 @@ class CartController extends Controller
         Session::put('cart', $cart);
 
         return response($item, 201);
+    }
+
+    public function remove($key){
+        $cart = Session::get('cart');
+        unset($cart[$key]);
+        Session::put('cart', $cart);
+
+        return response($cart);
     }
 
     /**
