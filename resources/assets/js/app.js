@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 require('./owl.carousel.min');
+require('./vueapp');
 
 /**
  * Main navigation mega dropdown

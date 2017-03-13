@@ -50,50 +50,16 @@
 
 			<div class="col-sm-3 col-md-3">
 				<div class="cart-widget navbar-right clearfix">
-					<a href="#" class="btn CTA-cart btn-default square-borders">30 Items - PKR 1500/-</a>
+					<a href="#" class="btn CTA-cart btn-default square-borders">@{{ totalItems }} Items - PKR @{{ cartAmount }}/-</a>
+
 					<div class="cart-list">
-						<ul>
-							<li class="row">
-								<div class="image">
-									{{ Html::image('uploads/dummy/50.png') }}
-									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
-								</div>
-								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
-							</li>
-							<li class="row">
-								<div class="image">
-									{{ Html::image('uploads/dummy/50.png') }}
-									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
-								</div>
-								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
-							</li>
-							<li class="row">
-								<div class="image">
-									{{ Html::image('uploads/dummy/50.png') }}
-									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
-								</div>
-								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
-							</li>
-							<li class="row">
-								<div class="image">
-									{{ Html::image('uploads/dummy/50.png') }}
-									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
-								</div>
-								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
-							</li>
-							<li class="row">
-								<div class="image">
-									{{ Html::image('uploads/dummy/50.png') }}
-									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
-								</div>
-								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
-							</li>
-						</ul>
+						<cart-list :cart="cart"></cart-list>
 						<div class="row cart-options">
 							<div class="col-md-6"><a href="#" class="btn square-borders">Goto Cart</a></div>
 							<div class="col-md-6"><a href="#" class="btn square-borders">Checkout</a></div>
 						</div>
 					</div>
+
 				</div>{{-- / .cart-widget --}}
 			</div>
 		</div>

@@ -22,7 +22,7 @@
             @include('frontend.layout.header')
             
             <div class="container">
-                @yield('contens')
+                @yield('content')
             </div>{{-- / .container --}}
 
             <div class="container">

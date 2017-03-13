@@ -2,7 +2,7 @@
 
 @section('title', $product->meta('title') ?: $product->name)
 
-@section('contens')
+@section('content')
 
     <div class="row">
         <div class="col-md-9">
@@ -27,14 +27,18 @@
 							<li><i class="fa fa-star"></i></li>
 							<li><i class="fa fa-star"></i></li>
 						</ul>
-						<span class="reviews">(1 Customer review)</span>
+						<span class="reviews">( 2 Customer {{ str_plural('review', 2) }} )</span>
 					</div>{{-- / .ratings --}}
 
 					<div class="price-box">PKR {{$product->sale_price}}</div>
 
 					<p class="description">{{ $product->description }}</p>
 
-					<button class="btn btn-theme btn-default square-borders">ADD TO CART</button>
+					{!! Form::open(['route'=>'cart.add', 'class'=>'form-horizontal', 'id'=>'AddToCart']) !!}
+						{!! Form::text('quantity', 1, ['class'=>'form-quantity']) !!}
+						{!! Form::hidden('product_id', $product->id) !!}
+						{!! Form::submit('ADD TO CART', ['class'=>'btn btn-theme btn-default square-borders']) !!}
+					{!! Form::close() !!}
 
 					<hr>
 					<p><strong>SKU:</strong> <span>{{ $product->sku }}</span></p>
