@@ -30584,6 +30584,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('div', {
       staticClass: "image"
     }, [_c('img', {
+      staticClass: "img-responsive",
       attrs: {
         "src": item.thumbnail,
         "alt": ""

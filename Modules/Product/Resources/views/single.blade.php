@@ -36,7 +36,10 @@
 					<p class="description">{{ $product->description }}</p>
 
 					{!! Form::open(['v-on:submit.prevent'=>'AddToCart('.$product->id.')']) !!}
-						{!! Form::text('quantity', 1, ['class'=>'form-quantity', 'v-model'=>'item.quantity']) !!}
+						{!! Form::number('quantity', 1,
+						['class'=>'form-quantity form-control square-borders pull-left',
+						'v-model'=>'item.quantity',
+						'min'=>1]) !!}
 						{!! Form::submit('ADD TO CART', ['class'=>'btn btn-theme btn-default square-borders']) !!}
 					{!! Form::close() !!}
 

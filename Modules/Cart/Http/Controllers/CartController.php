@@ -2,9 +2,12 @@
 
 namespace Modules\Cart\Http\Controllers;
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Session;
+use Modules\Product\Entities\Product;
 
 class CartController extends Controller
 {
@@ -22,16 +25,31 @@ class CartController extends Controller
      * @param Request $request
      */
     public function add(Request $request){
-        return response( ['id'=>$request->product_id, 'name'=>'testing 1', 'quantity'=>$request->quantity, 'price'=>100, 'thumbnail'=>'http://grocery.local/uploads/dummy/50.png', 'route'=>'#'], 201);
-        return 'Added to cart';
-    }
 
-    public function widget(){
-        $data = [
-            ['id'=>1, 'name'=>'testing 1', 'quantity'=>1, 'price'=>100, 'thumbnail'=>'http://grocery.local/uploads/dummy/50.png', 'route'=>'#'],
-            ['id'=>2, 'name'=>'testing 2', 'quantity'=>5, 'price'=>50, 'thumbnail'=>'http://grocery.local/uploads/dummy/50.png', 'route'=>'#'],
+        $product = Product::findOrFail($request->product_id);
+        $thumbnail = $product->thumbnails->first();
+
+        $item = [
+            'name' => $product->name,
+            'quantity' => $request->quantity,
+            'price' => $product->sale_price,
+            'route' => $product->route,
+            'thumbnail' => url($thumbnail->path.$thumbnail->name)
         ];
 
-        return response($data, 200);
+        $cart = Session::get('cart');
+        $cart[] = $item;
+        Session::put('cart', $cart);
+
+        return response($item, 201);
+    }
+
+    /**
+     * Get cart items for widget
+     */
+    public function widget(){
+//        Session::forget('cart');
+//        Session::flush();
+        return response(Session::get('cart') ?: [], 200);
     }
 }
