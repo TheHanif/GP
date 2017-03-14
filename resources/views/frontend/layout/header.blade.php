@@ -55,8 +55,8 @@
 					<div class="cart-list" v-if="cart.length > 0">
 						<cart-list :cart.sync="cart"></cart-list>
 						<div class="row cart-options">
-							<div class="col-md-6"><a href="#" class="btn square-borders">Goto Cart</a></div>
-							<div class="col-md-6"><a href="#" class="btn square-borders">Checkout</a></div>
+							<div class="col-md-6"><a href="{{ route('cart') }}" class="btn square-borders">Goto Cart</a></div>
+							<div class="col-md-6"><a href="{{ route('cart.checkout') }}" class="btn square-borders">Checkout</a></div>
 						</div>
 					</div>
 

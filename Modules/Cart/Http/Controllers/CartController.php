@@ -30,6 +30,7 @@ class CartController extends Controller
         $thumbnail = $product->thumbnails->first();
 
         $item = [
+            'product_id' => $product->id,
             'name' => $product->name,
             'quantity' => $request->quantity,
             'price' => $product->sale_price,
@@ -44,11 +45,26 @@ class CartController extends Controller
         return response($item, 201);
     }
 
+    /**
+     * Remove item from cart
+     */
     public function remove($key){
+        // Get cart items
         $cart = Session::get('cart');
-        unset($cart[$key]);
-        Session::put('cart', $cart);
 
+        // Remove item
+        unset($cart[$key]);
+
+        // Re arrange array
+        $temp = [];
+        foreach ($cart as $key => $item){
+            $temp[] = $item;
+        }
+
+        // Put it to session
+        Session::put('cart', $temp);
+
+        // Return updated cart items
         return response($cart);
     }
 
