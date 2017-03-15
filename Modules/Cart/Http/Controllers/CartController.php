@@ -6,6 +6,8 @@ namespace Modules\Cart\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Modules\Cart\Entities\Cart;
 use Session;
 use Modules\Product\Entities\Product;
 
@@ -35,12 +37,25 @@ class CartController extends Controller
             'quantity' => $request->quantity,
             'price' => $product->sale_price,
             'route' => $product->route,
-            'thumbnail' => url($thumbnail->path.$thumbnail->name)
+            'thumbnail' => url($thumbnail->path.$thumbnail->name),
+            'id' => null
         ];
 
-        $cart = Session::get('cart');
-        $cart[] = $item;
-        Session::put('cart', $cart);
+        // Save to cart table
+        if (!Auth::guest()){
+            $cart = new Cart();
+            $cart->fill($item);
+
+            Auth::user()->cart()->save($cart);
+
+            $item['id'] = $cart->id;
+        }else{
+
+            // Or put it in session
+            $cart = Session::get('cart');
+            $cart[] = $item;
+            Session::put('cart', $cart);
+        }
 
         return response($item, 201);
     }
@@ -48,7 +63,17 @@ class CartController extends Controller
     /**
      * Remove item from cart
      */
-    public function remove($key){
+    public function remove($key, $cart_id = null){
+
+        // Delete item from cart table if user logged in
+        if (!Auth::guest()){
+            Auth::user()->cart()->find($cart_id)->delete();
+            $cart = Auth::user()->cart()->get();
+            return response($cart);
+        }
+
+        // else : Remove item from cart session
+
         // Get cart items
         $cart = Session::get('cart');
 
@@ -74,6 +99,12 @@ class CartController extends Controller
     public function widget(){
 //        Session::forget('cart');
 //        Session::flush();
-        return response(Session::get('cart') ?: [], 200);
+
+        if (!Auth::guest()){
+            $cart = Auth::user()->cart()->get();
+        }else{
+            $cart = Session::get('cart') ?: [];
+        }
+        return response($cart, 200);
     }
 }

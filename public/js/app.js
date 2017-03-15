@@ -10400,10 +10400,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = {
     props: ['cart'],
     methods: {
-        DeleteCartItem: function DeleteCartItem(key) {
+        DeleteCartItem: function DeleteCartItem(key, cart_id) {
             var _this = this;
 
-            this.$http.get('/cart/remove/' + key).then(function (response) {
+            this.$http.get('/cart/remove/' + key + '/' + cart_id).then(function (response) {
                 if (response.status == 200) {
                     _this.cart.splice(key, 1);
                 }
@@ -30611,7 +30611,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "click": function($event) {
           $event.preventDefault();
-          _vm.DeleteCartItem(key)
+          _vm.DeleteCartItem(key, item.id)
         }
       }
     }, [_c('i', {
