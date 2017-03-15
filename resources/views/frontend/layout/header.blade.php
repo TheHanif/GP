@@ -15,14 +15,30 @@
 		
 				<div class="collapse navbar-collapse top-bar-collapse">
 					<ul class="nav navbar-nav navbar-right">
+
+						@if (Auth::guest())
+							<li><a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a></li>
+							<li><a href="{{ route('register') }}"><i class="fa fa-key"></i>  Register</a></li>
+						@else
 						<li class="dropdown" ><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> My Account</a>
 							<ul class="dropdown-menu">
 								<li><a href="#">My Orders</a></li>
 								<li><a href="#">Edit Profile</a></li>
 								<li><a href="#">Change password</a></li>
+								<li>
+									<a href="{{ route('logout') }}"
+									   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+										Logout
+									</a>
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										{{ csrf_field() }}
+									</form>
+								</li>
 							</ul>
 						</li>
 						<li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+						@endif
 						<li><a href="#"><i class="fa fa-money"></i> Checkout</a></li>
 						<li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 						<li><a href="#"><i class="fa fa-search"></i> Track my order</a></li>
