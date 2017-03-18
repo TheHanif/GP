@@ -12,13 +12,15 @@
 
 <script>
     export default {
-        props: ['cart'],
+        props: ['cart', 'is_loading'],
         methods: {
             DeleteCartItem: function(key, cart_id){
+                this.$parent.is_loading = true;
                 this.$http.get('/cart/remove/'+key+'/'+cart_id).then((response) => {
                     if(response.status == 200){
                         this.cart.splice(key, 1);
                     }
+                    this.$parent.is_loading = false;
                 });
             }
         }

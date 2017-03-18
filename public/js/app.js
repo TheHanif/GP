@@ -10398,15 +10398,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = {
-    props: ['cart'],
+    props: ['cart', 'is_loading'],
     methods: {
         DeleteCartItem: function DeleteCartItem(key, cart_id) {
             var _this = this;
 
+            this.$parent.is_loading = true;
             this.$http.get('/cart/remove/' + key + '/' + cart_id).then(function (response) {
                 if (response.status == 200) {
                     _this.cart.splice(key, 1);
                 }
+                _this.$parent.is_loading = false;
             });
         }
     }
@@ -10781,7 +10783,9 @@ new Vue({
         cart: [],
 
         // Single item to be added in cart
-        item: { quantity: 1, product_id: null }
+        item: { quantity: 1, product_id: null },
+
+        is_loading: false
     },
 
     created: function created() {
@@ -10804,11 +10808,14 @@ new Vue({
         AddToCart: function AddToCart(product_id) {
             var _this2 = this;
 
+            this.is_loading = true;
+
             var postData = { quantity: this.item.quantity, product_id: product_id };
 
             this.$http.post('/cart/add', postData).then(function (response) {
                 _this2.cart.push(response.data);
                 _this2.item = { quantity: 1, product_id: null };
+                _this2.is_loading = false;
             });
         },
         AddToCartDirect: function AddToCartDirect(product_id) {

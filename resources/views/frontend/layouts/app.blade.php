@@ -43,8 +43,11 @@
             {{-- Footer --}}
             @include('frontend.layouts.footer')
 
-        </div>{{-- / #wrapper --}}
+            <div id="ajax-loading" v-if="is_loading" class="ajax-loading">
+                {{ Html::image('images/loading.gif', 'Please wait...') }}
+            </div> {{-- / #ajax-loading --}}
 
+        </div>{{-- / #wrapper --}}
         
         <script src="{{mix('js/app.js')}}"></script>
 

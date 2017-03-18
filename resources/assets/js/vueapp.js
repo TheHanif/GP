@@ -16,6 +16,8 @@ new Vue({
 
         // Single item to be added in cart
         item: {quantity: 1, product_id: null},
+
+        is_loading: false,
     },
 
     created() {
@@ -33,11 +35,15 @@ new Vue({
 
     methods: {
         AddToCart(product_id){
+
+            this.is_loading = true;
+
             var postData = {quantity: this.item.quantity, product_id: product_id};
 
             this.$http.post('/cart/add', postData).then((response) => {
                 this.cart.push(response.data);
                 this.item = {quantity: 1, product_id: null}
+                this.is_loading = false;
             });
         },
 
