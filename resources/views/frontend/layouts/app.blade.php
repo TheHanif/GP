@@ -26,7 +26,7 @@
         <div id="wrapper">
             
             {{-- Header --}}
-            @include('frontend.layout.header')
+            @include('frontend.layouts.header')
             
             <div class="container">
                 @yield('content')
@@ -41,7 +41,7 @@
             </div>{{-- / .container for manufacturers widget --}}
 
             {{-- Footer --}}
-            @include('frontend.layout.footer')
+            @include('frontend.layouts.footer')
 
         </div>{{-- / #wrapper --}}
 
