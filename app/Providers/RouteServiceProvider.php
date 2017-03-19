@@ -123,10 +123,14 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('category', function($value, $route){
 
             // Generate unique cache key for value
-            $cacheKey = 'pageURI_'.MD5($value);
+            $cacheKey = 'categoryURI_'.MD5($value);
 
-            return $this->itemParentAncestors(\Modules\Category\Entities\Category::class, $value, $cacheKey);
+            $category = $this->itemParentAncestors(\Modules\Category\Entities\Category::class, $value, $cacheKey);
 
+            if (!$category){
+                abort(404, 'Category not found');
+            }
+            return $category;
         });
     }
 
