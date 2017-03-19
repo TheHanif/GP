@@ -16,4 +16,6 @@ Route::group(['middleware' => 'web', 'prefix' => 'cart', 'namespace' => 'Modules
 
     // Remove an item from cart
     Route::get('/remove/{key}/{cart_id?}', ['as'=>'cart.remove', 'uses'=>'CartController@remove']);
+
+    Route::get('/update/{key}/{quantity}/{cart_id?}', ['as'=>'cart.update', 'uses'=>'CartController@update']);
 });

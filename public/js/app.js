@@ -10820,6 +10820,27 @@ new Vue({
         },
         AddToCartDirect: function AddToCartDirect(product_id) {
             this.AddToCart(product_id);
+        },
+        UpdateQuantity: function UpdateQuantity(key, cart_id, quantity) {
+            var _this3 = this;
+
+            this.is_loading = true;
+            this.$http.get('/cart/update/' + key + '/' + quantity + '/' + cart_id).then(function (response) {
+                _this3.cart = response.data;
+                _this3.is_loading = false;
+            });
+        },
+
+        DeleteCartItem: function DeleteCartItem(key, cart_id) {
+            var _this4 = this;
+
+            this.is_loading = true;
+            this.$http.get('/cart/remove/' + key + '/' + cart_id).then(function (response) {
+                if (response.status == 200) {
+                    _this4.cart = response.data;
+                }
+                _this4.is_loading = false;
+            });
         }
     },
 

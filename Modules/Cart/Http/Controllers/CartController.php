@@ -114,4 +114,34 @@ class CartController extends Controller
 
         return $cart;
     }
+
+    public function update($key, $quantity, $cart_id = null){
+
+        // Delete item from cart table if user logged in
+        if (!Auth::guest()){
+            Auth::user()->cart()->find($cart_id)->update(['quantity'=>$quantity]);
+            $cart = Auth::user()->cart()->get();
+            return response($cart);
+        }
+
+        // else : Update item from cart session
+
+        // Get cart items
+        $cart = Session::get('cart');
+
+        // Update item
+        $cart[$key]['quantity'] = $quantity;
+
+        // Re arrange array
+        $temp = [];
+        foreach ($cart as $key => $item){
+            $temp[] = $item;
+        }
+
+        // Put it to session
+        Session::put('cart', $temp);
+
+        // Return updated cart items
+        return response($cart);
+    }
 }
