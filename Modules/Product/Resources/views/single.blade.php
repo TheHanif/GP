@@ -1,9 +1,8 @@
-@extends('frontend.layout.app')
+@extends('frontend.layouts.app')
 
 @section('title', $product->meta('title') ?: $product->name)
 
-@section('contens')
-
+@section('content')
     <div class="row">
         <div class="col-md-9">
 
@@ -27,14 +26,22 @@
 							<li><i class="fa fa-star"></i></li>
 							<li><i class="fa fa-star"></i></li>
 						</ul>
-						<span class="reviews">(1 Customer review)</span>
+
+						<span class="reviews">( 2 Customer {{ str_plural('review', 2) }} )</span>
+
 					</div>{{-- / .ratings --}}
 
 					<div class="price-box">PKR {{$product->sale_price}}</div>
 
-					<p class="description">{{ $product->description }}</p>
+					<p class="description">{{ $product->meta('description') }}</p>
 
-					<button class="btn btn-theme btn-default square-borders">ADD TO CART</button>
+					{!! Form::open(['v-on:submit.prevent'=>'AddToCart('.$product->id.')']) !!}
+						{!! Form::number('quantity', null,
+						['class'=>'form-quantity form-control square-borders pull-left',
+						'v-model'=>'item.quantity',
+						'min'=>1]) !!}
+						{!! Form::submit('ADD TO CART', ['class'=>'btn btn-theme btn-default square-borders']) !!}
+					{!! Form::close() !!}
 
 					<hr>
 					<p><strong>SKU:</strong> <span>{{ $product->sku }}</span></p>
@@ -67,7 +74,7 @@
             		<!-- Tab panes -->
             		<div class="tab-content">
             			<div role="tabpanel" class="tab-pane active" id="Description">
-							{!! $product->long_description ?: 'No description' !!}
+							{!! $product->meta('long_description') ?: 'No description' !!}
 						</div>
             			<div role="tabpanel" class="tab-pane" id="Reviews">Reviews</div>
             		</div>
@@ -87,7 +94,7 @@
 
 @push('pagemeta')
 
-	<meta name="description" content="{{ $product->meta_description }}">
+	<meta name="description" content="{{ $product->meta('meta_description') }}">
 	<link rel="canonical" href="{{$product->route}}" />
 
 @endpush

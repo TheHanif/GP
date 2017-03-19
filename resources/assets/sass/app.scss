@@ -54,6 +54,29 @@ body{
   line-height:1.56;
 }
 
+.ajax-loading{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 1000;
+  color: #efefef;
+  text-align: center;
+  font-size: 3em;
+
+  img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+[v-cloak] {
+  display: none;
+}
 
 /*==============================
 =            TOPBAR            =

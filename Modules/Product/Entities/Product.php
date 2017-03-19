@@ -35,25 +35,9 @@ class Product extends Model
      */
     public function meta($key)
     {
-        $value = $this->metas()->select('meta_value')->where('meta_key', $key)->first();
-        return $value ? $value['meta_value'] : null;
-    }
-
-    public function getDescriptionAttribute(){
-        return Cache::remember('productDescription'.$this->id, env('CACHE_ITEM', 60), function() {
-            return $this->meta('description');
-        });
-    }
-
-    public function getMetaDescriptionAttribute(){
-        return Cache::remember('productMetaDescription'.$this->id, env('CACHE_ITEM', 60), function() {
-            return $this->meta('meta_description');
-        });
-    }
-
-    public function getLongDescriptionAttribute(){
-        return Cache::remember('productLongDescription'.$this->id, env('CACHE_ITEM', 60), function() {
-            return $this->meta('long_description');
+        return Cache::remember('productMeta'.$key.$this->id, env('CACHE_ITEM', 60), function() use ($key) {
+            $value = $this->metas()->select('meta_value')->where('meta_key', $key)->first();
+            return $value ? $value['meta_value'] : null;
         });
     }
 

@@ -29,7 +29,7 @@ class SiteController extends Controller
     {
         $products = $parent->products;
 
-        return view('product::list', compact('products', 'parent'));
+        return view('product::index', compact('products', 'parent'));
     }
 
     /**
@@ -47,12 +47,12 @@ class SiteController extends Controller
     public function brand(Brand $parent){
         $products = $parent->products;
 
-        return view('product::list', compact('products', 'parent'));
+        return view('product::index', compact('products', 'parent'));
     }
 
     public function manufacturer(Manufacturer $parent){
         $products = $parent->products;
 
-        return view('product::list', compact('products', 'parent'));
+        return view('product::index', compact('products', 'parent'));
     }
 }

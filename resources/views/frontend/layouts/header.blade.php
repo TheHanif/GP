@@ -15,16 +15,32 @@
 		
 				<div class="collapse navbar-collapse top-bar-collapse">
 					<ul class="nav navbar-nav navbar-right">
+
+						@if (Auth::guest())
+							<li><a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a></li>
+							<li><a href="{{ route('register') }}"><i class="fa fa-key"></i>  Register</a></li>
+						@else
 						<li class="dropdown" ><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> My Account</a>
 							<ul class="dropdown-menu">
 								<li><a href="#">My Orders</a></li>
 								<li><a href="#">Edit Profile</a></li>
 								<li><a href="#">Change password</a></li>
+								<li>
+									<a href="{{ route('logout') }}"
+									   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+										Logout
+									</a>
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										{{ csrf_field() }}
+									</form>
+								</li>
 							</ul>
 						</li>
 						<li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-						<li><a href="#"><i class="fa fa-money"></i> Checkout</a></li>
-						<li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+						@endif
+						<li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+						<li><a href="{{ route('cart.checkout') }}"><i class="fa fa-money"></i> Checkout</a></li>
 						<li><a href="#"><i class="fa fa-search"></i> Track my order</a></li>
 						<li><a href="#"><i class="fa fa-book"></i> Help</a></li>
 					</ul>
@@ -50,50 +66,16 @@
 
 			<div class="col-sm-3 col-md-3">
 				<div class="cart-widget navbar-right clearfix">
-					<a href="#" class="btn CTA-cart btn-default square-borders">30 Items - PKR 1500/-</a>
-					<div class="cart-list">
-						<ul>
-							<li class="row">
-								<div class="image">
-									{{ Html::image('uploads/dummy/50.png') }}
-									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
-								</div>
-								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
-							</li>
-							<li class="row">
-								<div class="image">
-									{{ Html::image('uploads/dummy/50.png') }}
-									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
-								</div>
-								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
-							</li>
-							<li class="row">
-								<div class="image">
-									{{ Html::image('uploads/dummy/50.png') }}
-									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
-								</div>
-								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
-							</li>
-							<li class="row">
-								<div class="image">
-									{{ Html::image('uploads/dummy/50.png') }}
-									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
-								</div>
-								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
-							</li>
-							<li class="row">
-								<div class="image">
-									{{ Html::image('uploads/dummy/50.png') }}
-									<a href="#" title="Remove this item from cart"><i class="fa fa-trash-o"></i></a>
-								</div>
-								<div class="detail"><a href="#">Sample name of large product</a> <br> <small>1 x PKR 150</small></div>
-							</li>
-						</ul>
+					<a href="{{ route('cart') }}" class="btn CTA-cart btn-default square-borders">@{{ totalItems }} Items - PKR @{{ cartAmount }}/-</a>
+
+					<div class="cart-list" v-if="cart.length > 0">
+						<cart-list :cart.sync="cart" :is_loading.sync="is_loading"></cart-list>
 						<div class="row cart-options">
-							<div class="col-md-6"><a href="#" class="btn square-borders">Goto Cart</a></div>
-							<div class="col-md-6"><a href="#" class="btn square-borders">Checkout</a></div>
+							<div class="col-md-6"><a href="{{ route('cart') }}" class="btn square-borders">Goto Cart</a></div>
+							<div class="col-md-6"><a href="{{ route('cart.checkout') }}" class="btn square-borders">Checkout</a></div>
 						</div>
 					</div>
+
 				</div>{{-- / .cart-widget --}}
 			</div>
 		</div>

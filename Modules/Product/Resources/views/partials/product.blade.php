@@ -20,7 +20,7 @@ $url = URL('/'.$parent->AncestorsList.'/'.$product->slug);
                 <li><a href="#"><i class="fa fa-toggle-on"></i></a></li>
                 <li><a href="#"><i class="fa fa-search"></i></a></li>
             </ul>
-            <div class="action-add-cart"><a href="#"><i class="fa fa-shopping-cart"></i> Add to cart</a></div>
+            <div class="action-add-cart"><a href="#" @click.prevent="AddToCartDirect({{ $product->id }})"><i class="fa fa-shopping-cart"></i> Add to cart</a></div>
         </div>
     </div>
     <h2 class="product-name"><a href="{{$url}}">{{ $product->name }}</a></h2>

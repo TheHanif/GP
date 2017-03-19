@@ -17,7 +17,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// lets try a wildcard...
+
+Auth::routes();
 
 Route::group(['as' => 'site.'], function()
 {
