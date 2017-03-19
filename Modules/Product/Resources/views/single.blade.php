@@ -33,7 +33,7 @@
 
 					<div class="price-box">PKR {{$product->sale_price}}</div>
 
-					<p class="description">{{ $product->description }}</p>
+					<p class="description">{{ $product->meta('description') }}</p>
 
 					{!! Form::open(['v-on:submit.prevent'=>'AddToCart('.$product->id.')']) !!}
 						{!! Form::number('quantity', 1,
@@ -74,7 +74,7 @@
             		<!-- Tab panes -->
             		<div class="tab-content">
             			<div role="tabpanel" class="tab-pane active" id="Description">
-							{!! $product->long_description ?: 'No description' !!}
+							{!! $product->meta('long_description') ?: 'No description' !!}
 						</div>
             			<div role="tabpanel" class="tab-pane" id="Reviews">Reviews</div>
             		</div>
@@ -94,7 +94,7 @@
 
 @push('pagemeta')
 
-	<meta name="description" content="{{ $product->meta_description }}">
+	<meta name="description" content="{{ $product->meta('meta_description') }}">
 	<link rel="canonical" href="{{$product->route}}" />
 
 @endpush

@@ -75,7 +75,7 @@ class RouteServiceProvider extends ServiceProvider
              $cacheKey = MD5($routeParent.$routeProduct);
              // Get cached item
              if (env('CACHE_SINGLE_PRODUCT', false) && Cache::has($cacheKey)) {
-                 // return Cache::get($cacheKey);
+                 return Cache::get($cacheKey);
              }
 
              // Get Single product

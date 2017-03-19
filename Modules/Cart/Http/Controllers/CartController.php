@@ -100,11 +100,18 @@ class CartController extends Controller
 //        Session::forget('cart');
 //        Session::flush();
 
+        $cart = $this->cart();
+        return response($cart, 200);
+    }
+
+    // Get Cart list
+    public function cart(){
         if (!Auth::guest()){
             $cart = Auth::user()->cart()->get();
         }else{
             $cart = Session::get('cart') ?: [];
         }
-        return response($cart, 200);
+
+        return $cart;
     }
 }
