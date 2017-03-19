@@ -36,7 +36,7 @@
 					<p class="description">{{ $product->meta('description') }}</p>
 
 					{!! Form::open(['v-on:submit.prevent'=>'AddToCart('.$product->id.')']) !!}
-						{!! Form::number('quantity', 1,
+						{!! Form::number('quantity', null,
 						['class'=>'form-quantity form-control square-borders pull-left',
 						'v-model'=>'item.quantity',
 						'min'=>1]) !!}

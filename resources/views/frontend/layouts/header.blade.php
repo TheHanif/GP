@@ -39,8 +39,8 @@
 						</li>
 						<li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
 						@endif
-						<li><a href="#"><i class="fa fa-money"></i> Checkout</a></li>
-						<li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+						<li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+						<li><a href="{{ route('cart.checkout') }}"><i class="fa fa-money"></i> Checkout</a></li>
 						<li><a href="#"><i class="fa fa-search"></i> Track my order</a></li>
 						<li><a href="#"><i class="fa fa-book"></i> Help</a></li>
 					</ul>
@@ -66,7 +66,7 @@
 
 			<div class="col-sm-3 col-md-3">
 				<div class="cart-widget navbar-right clearfix">
-					<a href="#" class="btn CTA-cart btn-default square-borders">@{{ totalItems }} Items - PKR @{{ cartAmount }}/-</a>
+					<a href="{{ route('cart') }}" class="btn CTA-cart btn-default square-borders">@{{ totalItems }} Items - PKR @{{ cartAmount }}/-</a>
 
 					<div class="cart-list" v-if="cart.length > 0">
 						<cart-list :cart.sync="cart" :is_loading.sync="is_loading"></cart-list>

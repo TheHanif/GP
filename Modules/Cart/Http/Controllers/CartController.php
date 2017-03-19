@@ -76,7 +76,6 @@ class CartController extends Controller
 
         // Get cart items
         $cart = Session::get('cart');
-
         // Remove item
         unset($cart[$key]);
 
@@ -90,7 +89,7 @@ class CartController extends Controller
         Session::put('cart', $temp);
 
         // Return updated cart items
-        return response($cart);
+        return response($temp);
     }
 
     /**
@@ -132,14 +131,8 @@ class CartController extends Controller
         // Update item
         $cart[$key]['quantity'] = $quantity;
 
-        // Re arrange array
-        $temp = [];
-        foreach ($cart as $key => $item){
-            $temp[] = $item;
-        }
-
-        // Put it to session
-        Session::put('cart', $temp);
+        // Put it back in session
+        Session::put('cart', $cart);
 
         // Return updated cart items
         return response($cart);
