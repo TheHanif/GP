@@ -6,7 +6,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'cart', 'namespace' => 'Modules
     Route::get('/', ['as'=>'cart','uses'=>'CartController@index']);
 
     // Go to checkout page
-    Route::get('checkout', ['as'=>'cart.checkout','uses'=>'CartController@index']);
+    Route::get('checkout', ['as'=>'cart.checkout','uses'=>'CartController@checkout']);
 
     // Route for cart widget list
     Route::get('widget', ['as'=>'cart.widget','uses'=>'CartController@widget']);

@@ -137,4 +137,12 @@ class CartController extends Controller
         // Return updated cart items
         return response($cart);
     }
+
+    public function checkout(){
+        if(count($this->cart()) == 0){
+            return redirect()->route('cart');
+        }
+
+        return view('cart::checkout');
+    }
 }
