@@ -4,167 +4,18 @@
 
 @section('content')
     <h1>Checkout</h1>
-
+    <example></example>
     <div class="well well-sm">Returning customer? Click here to login</div>
     <div class="well well-sm">Have a coupon? Click here to enter your code</div>
 
     {{ Form::open() }}
+
+        <user-details :user="userDetails"></user-details>
         <div class="row">
             <div class="col-sm-6 col-md-6">
-                <h2>Billing details</h2>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            {{ Form::label('billing[first_name]', 'First Name', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[first_name]', null, ['class'=>'form-control']) }}
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            {{ Form::label('billing[last_name]', 'Last Name', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[last_name]', null, ['class'=>'form-control']) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            {{ Form::label('billing[email]', 'Email address', ['class'=>'label-control']) }}
-                            {{ Form::email('billing[email]', null, ['class'=>'form-control']) }}
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            {{ Form::label('billing[mobile]', 'Mobile no.', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[mobile]', null, ['class'=>'form-control']) }}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::label('billing[address]', 'Address', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[address]', null, ['class'=>'form-control', 'placeholder'=>'Street address']) }}
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::text('billing[apartment]', null, ['class'=>'form-control', 'placeholder'=> 'Apartment, suite, unit etc. (Optional)']) }}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            {{ Form::label('billing[city]', 'City', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[city]', 'Karachi', ['class'=>'form-control', 'readonly'=>'true']) }}
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            {{ Form::label('billing[area]', 'Area', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[area]', null, ['class'=>'form-control']) }}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::label('billing[landmark]', 'Nearest Landmark', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[landmark]', null, ['class'=>'form-control', 'placeholder'=>'Any nearest famous place']) }}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::checkbox('different_shipping', 'yes', false, ['id'=>'different_shipping']) }}
-                            {{ Form::label('different_shipping', 'Change Shipping Details', ['class'=>'label-control']) }}
-                        </div>
-                    </div>
-                </div>
-            </div> {{-- / Billing details--}}
-
-            <div class="col-sm-6 col-md-6">
-                <h2>Shipping details</h2>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            {{ Form::label('billing[first_name]', 'First Name', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[first_name]', null, ['class'=>'form-control']) }}
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            {{ Form::label('billing[last_name]', 'Last Name', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[last_name]', null, ['class'=>'form-control']) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            {{ Form::label('billing[email]', 'Email address', ['class'=>'label-control']) }}
-                            {{ Form::email('billing[email]', null, ['class'=>'form-control']) }}
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            {{ Form::label('billing[mobile]', 'Mobile no.', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[mobile]', null, ['class'=>'form-control']) }}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::label('billing[address]', 'Address', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[address]', null, ['class'=>'form-control', 'placeholder'=>'Street address']) }}
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::text('billing[apartment]', null, ['class'=>'form-control', 'placeholder'=> 'Apartment, suite, unit etc. (Optional)']) }}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            {{ Form::label('billing[city]', 'City', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[city]', 'Karachi', ['class'=>'form-control', 'readonly'=>'true']) }}
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            {{ Form::label('billing[area]', 'Area', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[area]', null, ['class'=>'form-control']) }}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::label('billing[landmark]', 'Nearest Landmark', ['class'=>'label-control']) }}
-                            {{ Form::text('billing[landmark]', null, ['class'=>'form-control', 'placeholder'=>'Any nearest famous place']) }}
-                        </div>
-                    </div>
-                </div>
-            </div> {{-- / Shipping details--}}
-        </div> {{-- / Customer Information form --}}
-
-        <h2>Additional Information</h2>
-        <div class="row">
-            <div class="col-sm-6 col-md-6">
+                <h2>Additional Information</h2>
                 <div class="form-group">
-                    {{ Form::label('billing[landmark]', 'Order Notes', ['class'=>'label-control']) }}
+                    {{ Form::label('additional_information', 'Order Notes', ['class'=>'label-control']) }}
                     {{ Form::textarea('additional_information', null, ['class'=>'form-control', 'placeholder'=>'Notes about your order, e.g. special notes for delivery', 'rows'=>5]) }}
                 </div>
             </div>
@@ -219,4 +70,5 @@
             {{ Form::submit('Place order', ['class'=>'btn btn-theme square-borders pull-right']) }}
         </div>
     {{ Form::close() }}
+
 @stop

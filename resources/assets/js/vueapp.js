@@ -2,10 +2,12 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector("meta[name=csrf
 
 import VueResource from 'vue-resource';
 import CartWidgetList from './components/cartWidget.vue';
+import userDetails from './components/userDetails.vue';
 
 Vue.use(VueResource);
 
 Vue.component('cart-list', CartWidgetList);
+Vue.component('user-details', userDetails);
 
 new Vue({
     el: '#wrapper',
@@ -18,6 +20,31 @@ new Vue({
         item: {quantity: 1, product_id: null},
 
         is_loading: false,
+
+        userDetails: {
+            billing:{
+                first_name: '',
+                last_name: '',
+                email: '',
+                mobile: '',
+                address: '',
+                apartment: '',
+                city: '',
+                area: '',
+                landmark: '',
+            },
+            shipping:{
+                first_name: '',
+                last_name: '',
+                email: '',
+                mobile: '',
+                address: '',
+                apartment: '',
+                city: '',
+                area: '',
+                landmark: '',
+            }
+        }
     },
 
     created() {
@@ -86,6 +113,9 @@ new Vue({
             })
 
             return cartAmount;
+        },
+        billingLable(){
+            return this.shipping_details ? 'Billing' : 'Billing / Shipping';
         }
     }
 })
